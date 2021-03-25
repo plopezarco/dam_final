@@ -1,17 +1,15 @@
-CREATE DATABASE genshin;
-
-use genshin;
+use Genshin;
 
 CREATE TABLE characters (
-    id INT NOT NULL AUTO_INCREMENT,
-    name_character VARCHAR (50) NOT NULL,
+    id INT NOT NULL IDENTITY(1,1),
+    name_character VARCHAR(50) NOT NULL,
     weapon VARCHAR (50) NOT NULL,
     element VARCHAR (50) NOT NULL,
     rarity INT NOT NULL,
     birthday VARCHAR (50) NOT NULL,
     seiyuu VARCHAR (50) NOT NULL,
     region VARCHAR(50) NOT NULL,
-    description_character VARCHAR (500) NOT NULL,
+    description_character VARCHAR(500) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -34,7 +32,7 @@ INSERT INTO characters (name_character, weapon, element, rarity, birthday, seiyu
     ('Albedo', 'Sword', 'Geo', 5, 'September 13th', 'Nojima Kenji', 'Mondstadt', 'Albedo — an alchemist based in Mondstadt, in the service of the Knights of Favonius.'),
     ('Xiao', 'Polearm', 'Anemo', 5, '​April 17th', 'Matsuoka Yoshitsugu', 'Liyue', 'One of the mighty and illuminated adepti guarding Liyue, also heralded as the "Vigilant Yaksha."'),
     ('Beidou', 'Claymore', 'Electro', 4, '​February 14th', 'Koshimizu Ami', 'Liyue', 'Captain of the Crux, with quite the reputation in Liyue.'),
-    ('Ninguang', 'Catalyst', 'Geo', 4, '​August 26th', 'Ohara Sayaka', 'Owner of the Jade Chamber in the skies above Liyue, there are stories abound about Ningguang, with her elegance and mysterious smile.'),
+    ('Ninguang', 'Catalyst', 'Geo', 4, '​August 26th', 'Ohara Sayaka', 'Liyue', 'Owner of the Jade Chamber in the skies above Liyue, there are stories abound about Ningguang, with her elegance and mysterious smile.'),
     ('Xiangling', 'Polearm', 'Fire', 4, 'November 2nd', 'Ozawa Ari', 'Liyue', 'The Head Chef at the Wanmin Restaurant and also a waitress there, Xiangling is extremely passionate about cooking and excels at her signature hot and spicy dishes.'),
     ('Xingqiu', 'Sword', 'Hydro', 4, 'October 9th', 'Minagawa Junko', 'Liyue', 'Second son of the Feiyun Commerce Guild, Xingqiu has had a reputation for being studious and polite ever since he was a young child.'),
     ('Chongyun', 'Claymore', 'Cryo', 4, '​September 7th', 'Saito Soma', 'Liyue', 'An exorcist who roams the land with Liyue as his base of operations, evil spirits fleeing wherever he goes. As the heir to a clan of exorcists, he has always possessed abilities superior to most. However, these abilities are not the result of training, but of an inborn trait — a pure-yang spirit.'),

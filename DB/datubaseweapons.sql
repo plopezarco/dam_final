@@ -1,4 +1,13 @@
-INSERT INTO weapons (weapon_id, weapon_name, base_damage, sub_stat, sub_stat_perc, weapon_effect) VALUES
+Create table Weapons(
+weapon_id INT NOT NULL IDENTITY(1,1),
+weapon_name VARCHAR(50) NOT NULL,
+base_damage INT NOT NULL,
+sub_stat_name VARCHAR(50),
+sub_stat_value INT,
+weapon_effect VARCHAR(500)
+)
+
+INSERT INTO weapons (weapon_id, weapon_name, base_damage, sub_stat_name, sub_stat_value, weapon_effect) VALUES
     (1, 'Dull Blade', 23, Null, Null, Null),
     (2, 'Silver Sword', 33, Null, Null, Null),
     (3, 'Cool Steel', 39, 'ATK%', 7.7, 'Increases DMG against opponents affected by Hydro or Cryo by 12%.'),
@@ -23,7 +32,7 @@ INSERT INTO weapons (weapon_id, weapon_name, base_damage, sub_stat, sub_stat_per
     (22, 'Summit Shaper', 46, 'ATK%', 10.8, 'Increases Shield Strength by 20%. Scoring hits on opponents increases ATK by 4% for 8s. Max 5 stacks. Can only occur once every 0.3s. While protected by a shield, this ATK increase effect is increased by 100%.'),
     (23, 'Primordial Jade Cutter', 44, 'CRIT Rate%', 9.6, 'HP increased by 20%. Additionally, provides an ATK Bonus based on 1.2% of the wielder s Max HP.');
 
-INSERT INTO weapons (weapon_id, weapon_name, base_damage, sub_stat, sub_stat_perc, weapon_effect) VALUES
+INSERT INTO weapons (weapon_id, weapon_name, base_damage, sub_stat_name, sub_stat_value, weapon_effect) VALUES
     (24, 'Waster Greatsword', 23, Null, Null, Null),
     (25, 'Old Merc s Pal', 33, Null, Null, Null),
     (26, 'Bloodtainted Greatsword', 39, 'ATK%', 7.7, 'Increases DMG against opponents affected by Hydro or Cryo by 12%.'),

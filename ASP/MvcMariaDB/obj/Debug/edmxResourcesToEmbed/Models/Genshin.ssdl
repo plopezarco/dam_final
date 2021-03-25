@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GenshinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="characters">
+  <EntityType Name="Characters">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name_character" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="weapon" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="element" Type="varchar" MaxLength="50" Nullable="false" />
@@ -14,7 +14,32 @@
     <Property Name="region" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="description_character" Type="varchar" MaxLength="500" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Genshin.dbo.Weapons' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Weapons">
+    <Key>
+      <PropertyRef Name="weapon_id" />
+      <PropertyRef Name="weapon_name" />
+      <PropertyRef Name="base_damage" />
+    </Key>
+    <Property Name="weapon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="weapon_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="base_damage" Type="int" Nullable="false" />
+    <Property Name="sub_stat_name" Type="varchar" MaxLength="50" />
+    <Property Name="sub_stat_value" Type="int" />
+    <Property Name="weapon_effect" Type="varchar" MaxLength="500" />
+  </EntityType>
   <EntityContainer Name="GenshinModelStoreContainer">
-    <EntitySet Name="characters" EntityType="Self.characters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Characters" EntityType="Self.Characters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Weapons" EntityType="Self.Weapons" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Weapons].[weapon_id] AS [weapon_id], 
+    [Weapons].[weapon_name] AS [weapon_name], 
+    [Weapons].[base_damage] AS [base_damage], 
+    [Weapons].[sub_stat_name] AS [sub_stat_name], 
+    [Weapons].[sub_stat_value] AS [sub_stat_value], 
+    [Weapons].[weapon_effect] AS [weapon_effect]
+    FROM [dbo].[Weapons] AS [Weapons]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>
