@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GenshinModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="GenshinModel.Characters">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name_character" ColumnName="name_character" />
+          <ScalarProperty Name="weapon" ColumnName="weapon" />
+          <ScalarProperty Name="element" ColumnName="element" />
+          <ScalarProperty Name="rarity" ColumnName="rarity" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="seiyuu" ColumnName="seiyuu" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="description_character" ColumnName="description_character" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Weapons">
+      <EntityTypeMapping TypeName="GenshinModel.Weapons">
+        <MappingFragment StoreEntitySet="Weapons">
+          <ScalarProperty Name="weapon_id" ColumnName="weapon_id" />
+          <ScalarProperty Name="weapon_name" ColumnName="weapon_name" />
+          <ScalarProperty Name="base_damage" ColumnName="base_damage" />
+          <ScalarProperty Name="sub_stat_name" ColumnName="sub_stat_name" />
+          <ScalarProperty Name="sub_stat_value" ColumnName="sub_stat_value" />
+          <ScalarProperty Name="weapon_effect" ColumnName="weapon_effect" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
