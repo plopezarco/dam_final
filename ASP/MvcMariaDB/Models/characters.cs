@@ -19,6 +19,8 @@ namespace MvcMariaDB.Models
         public string Seiyuu { get; set; }
         public string Region { get; set; }
         public string Description { get; set; }
+        public string Image_Small { get; set; }
+        public string Image { get; set; }
 
         public static List<Characters> GetCharacters()
         {
@@ -26,7 +28,7 @@ namespace MvcMariaDB.Models
             DataSet dsCharacter = new DataSet();
             SqlDataAdapter daCharacter = new SqlDataAdapter();
             SqlCommand oSql = new SqlCommand();
-            oSql.CommandText = "SELECT [character_id],[character_name],[weapon],[element],[rarity],[birthday],[seiyuu],[region],[character_description] FROM Characters";
+            oSql.CommandText = "SELECT [character_id],[character_name],[weapon],[element],[rarity],[birthday],[seiyuu],[region],[character_description],[image_small] FROM Characters";
 
             oSql.Connection = konexioa.conn;
             daCharacter.SelectCommand = oSql;
@@ -45,6 +47,7 @@ namespace MvcMariaDB.Models
                 charac.Seiyuu = lerro["seiyuu"].ToString();
                 charac.Region = lerro["region"].ToString();
                 charac.Description = lerro["character_description"].ToString();
+                charac.Image_Small = lerro["image_small"].ToString();
                 characterList.Add(charac);
             }
             return characterList;
