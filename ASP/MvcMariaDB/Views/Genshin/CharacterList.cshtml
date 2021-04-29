@@ -1,10 +1,4 @@
-﻿@model IEnumerable<MvcMariaDB.Models.Characters>
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,10 +73,19 @@
             top: 5%;
             left: 5%;
         }
+
         .char-text {
             position: absolute;
             top: 30%;
             left: 5%;
+        }
+
+        .elem_img {
+            position: absolute;
+            top: 55%;
+            left: 5%;
+            width: 12%;
+            height: 35%;
         }
 
         body {
@@ -101,19 +104,25 @@
     </div>
 
     <div id="main">
-        <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>
+        <button class="openbtn" onclick="switchNav()">☰ Menu</button>
         <div id="main">
             <div class="inner">
                 <!-- Boxes -->
                 <div class="thumbnails">
                     @foreach (var item in Model)
                     {
-                        <div class="box" style="position: relative;">
-                            <img class="image fit" src="@item.Image_Small" />
-                            <h3 class="char-name">@item.Name.ToUpper()</h3>
-                            <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
-                        </div>
 
+                        <div class="box" style="position: relative;">
+                            <a href="@Url.Action("Character", "Genshin", new { char_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                                <img class="image fit" src="@item.Image_Small" />
+                                <h3 class="char-name">@item.Name.ToUpper()</h3>
+                                <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
+                                @{
+                                    var img_name = item.Element + ".png";
+                                    <img class="elem_img" src="~/images/@img_name" />
+                                }
+                            </a>
+                        </div>
                     }
                 </div>
             </div>
@@ -123,7 +132,6 @@
             <div class="inner">
                 <h2>Etiam veroeros lorem</h2>
                 <p>Pellentesque eleifend malesuada efficitur. Curabitur volutpat dui mi, ac imperdiet dolor tincidunt nec. Ut erat lectus, dictum sit amet lectus a, aliquet rutrum mauris. Etiam nec lectus hendrerit, consectetur risus viverra, iaculis orci. Phasellus eu nibh ut mi luctus auctor. Donec sit amet dolor in diam feugiat venenatis. </p>
-
                 <ul class="icons">
                     <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                     <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -137,6 +145,18 @@
 
 
     <script>
+        var isOpen = false;
+
+        function switchNav() {
+            if (isOpen) {
+                closeNav();
+                isOpen = false;
+            } else {
+                openNav();
+                isOpen = true;
+            }
+        }
+
         function openNav() {
             document.getElementById("mySidebar").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";

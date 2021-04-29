@@ -22,5 +22,10 @@ namespace MvcMariaDB.Controllers
         {
             return View(Models.Characters.GetCharacters());
         }
+
+        public ActionResult Character(int char_id)
+        {
+            return View(Models.Characters.GetCharacterById(char_id));
+        }
     }
 }

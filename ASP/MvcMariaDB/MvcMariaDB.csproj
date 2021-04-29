@@ -215,7 +215,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Genshin\Characters.cshtml" />
+    <Content Include="Views\Genshin\Character.cshtml" />
     <Content Include="Views\Genshin\CharacterList.cshtml" />
   </ItemGroup>
   <ItemGroup>
