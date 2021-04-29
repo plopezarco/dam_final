@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: genshin_font;
-    src: url(../../fonts/genshin_font.ttf);
+    src: url(../fonts/genshin_font.ttf);
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -30,6 +30,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
     line-height: 1;
+    font-family: genshin_font;
 }
 
 ol, ul {
@@ -98,11 +99,11 @@ body {
 
 body, input, select, textarea {
     color: rgba(255, 255, 255, 0.75);
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: genshin_font;
     font-size: 14pt;
     font-weight: 300;
     line-height: 1.65;
-}
+}-->
 
 @media screen and (max-width: 1680px) {
 
@@ -1388,24 +1389,19 @@ body.is-loading #banner:before {
     }
 }
 
-
-/*SIDEBAR*/
-
-/* The sidebar menu */
 .sidebar {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-    /* The sidebar links */
     .sidebar a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
@@ -1413,14 +1409,13 @@ body.is-loading #banner:before {
         color: #818181;
         display: block;
         transition: 0.3s;
+        border: 0;
     }
 
-        /* When you mouse over the navigation links, change their color */
         .sidebar a:hover {
             color: #f1f1f1;
         }
 
-    /* Position and style the close button (top right corner) */
     .sidebar .closebtn {
         position: absolute;
         top: 0;
@@ -1429,13 +1424,14 @@ body.is-loading #banner:before {
         margin-left: 50px;
     }
 
-/* The button used to open the sidebar */
 .openbtn {
     font-size: 20px;
     cursor: pointer;
     background-color: #111;
     color: white;
     padding: 10px 15px;
+    height: 2.85em;
+    line-height: 0;
     border: none;
 }
 
@@ -1443,21 +1439,27 @@ body.is-loading #banner:before {
         background-color: #444;
     }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-    transition: margin-left .5s; /* If you want a transition effect */
-    padding: 20px;
+    transition: margin-left .5s;
+    padding: 16px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidebar {
-        padding-top: 15px;
-    }
-
-        .sidebar a {
-            font-size: 18px;
-        }
+.char-name {
+    position: absolute;
+    top: 5%;
+    left: 5%;
 }
 
-/*END-SIDEBAR*/
+.char-text {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+}
+
+.elem_img {
+    position: absolute;
+    top: 55%;
+    left: 5%;
+    width: 12%;
+    height: 35%;
+}

@@ -162,6 +162,7 @@
     <Content Include="assets\css\images\bg1.png" />
     <Content Include="assets\css\main.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\jquery.poptrox.min.js" />
     <Content Include="assets\js\jquery.scrolly.min.js" />
@@ -190,6 +191,11 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="fonts\genshin_font.ttf" />
+    <Content Include="assets\fonts\genshin_font.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
