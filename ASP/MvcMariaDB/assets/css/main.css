@@ -81,7 +81,11 @@ body {
 }
 
 body {
-    background: #202024;
+    background-image: url(https://www.gensh.in/typo3conf/ext/awsm_page_package/Resources/Public/MainTemplate/Images/Backgrounds/1.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
     body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -321,6 +325,11 @@ header h6 + p {
         margin: 0 1em 2em 1em;
         width: 30%;
     }
+    .thumbnails .big_box {
+        margin: 0 1em 2em 1em;
+        width: 70%;
+    }
+
 
 @media screen and (max-width: 1280px) {
 
@@ -536,11 +545,10 @@ input[type="radio"] {
 }
 
 /* Box */
-
 .box {
-    border-radius: 4px;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.2);
     margin-bottom: 2em;
-    background: #2c2c32;
     text-align: center;
 }
 
@@ -1323,17 +1331,6 @@ body.is-loading #banner:before {
 
 /* Main */
 
-#main {
-    padding: 4em 0 2em 0;
-}
-
-@media screen and (max-width: 736px) {
-
-    #main {
-        padding: 3em 0 1em 0;
-    }
-}
-
 #main .inner {
     width: 90%;
     max-width: 80em;
@@ -1390,13 +1387,14 @@ body.is-loading #banner:before {
 }
 
 .sidebar {
+    border-radius: 2px;
+    background: rgba(0,0,0,0.2);
     height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -1425,9 +1423,11 @@ body.is-loading #banner:before {
     }
 
 .openbtn {
+    margin:16px;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.2);
     font-size: 20px;
     cursor: pointer;
-    background-color: #111;
     color: white;
     padding: 10px 15px;
     height: 2.85em;
@@ -1441,7 +1441,6 @@ body.is-loading #banner:before {
 
 #main {
     transition: margin-left .5s;
-    padding: 16px;
 }
 
 .char-name {

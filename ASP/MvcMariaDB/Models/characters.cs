@@ -29,7 +29,7 @@ namespace MvcMariaDB.Models
             DataSet dsCharacter = new DataSet();
             SqlDataAdapter daCharacter = new SqlDataAdapter();
             SqlCommand oSql = new SqlCommand();
-            oSql.CommandText = "SELECT [character_id],[character_name],[weapon],[element],[rarity],[birthday],[seiyuu],[region],[character_description],[image_small] FROM Characters ORDER BY Character_Name";
+            oSql.CommandText = "SELECT [character_id],[character_name],[weapon],[element],[rarity],[birthday],[seiyuu],[region],[character_description],[image_small],[image_big] FROM Characters ORDER BY Character_Name";
 
             oSql.Connection = konexioa.conn;
             daCharacter.SelectCommand = oSql;
@@ -49,6 +49,7 @@ namespace MvcMariaDB.Models
                 charac.Region = lerro["region"].ToString();
                 charac.Description = lerro["character_description"].ToString();
                 charac.Image_Small = lerro["image_small"].ToString();
+                charac.Image = lerro["image_big"].ToString();
                 characterList.Add(charac);
             }
             Characters_List = characterList;

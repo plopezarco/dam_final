@@ -1,98 +1,21 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title | Genshin Impact</title>
-    <link rel="stylesheet" href="~/assets/css/main.css">
-    <!--<link rel="stylesheet" href="~/assets/css/font-awesome.min.css">-->
-    <link rel="icon" href="~/images/mora.png">
-    @Scripts.Render("~/bundles/modernizr")
+﻿
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+        @foreach (var item in Model)
+        {
 
-</head>
-<body>
-
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
-
-    <div id="main">
-        <button class="openbtn" onclick="switchNav()">☰ Menu</button>
-        <div id="main">
-            <div class="inner">
-                <!-- Boxes -->
-                <div class="thumbnails">
-                    @foreach (var item in Model)
-                    {
-
-                        <div class="box" style="position: relative;">
-                            <a href="@Url.Action("Character", "Genshin", new { char_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
-                                <img class="image fit" src="@item.Image_Small" />
-                                <h3 class="char-name">@item.Name.ToUpper()</h3>
-                                <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
-                                @{
-                                    var img_name = item.Element + ".png";
-                                    <img class="elem_img" src="~/images/@img_name" />
-                                }
-                            </a>
-                        </div>
+            <div class="box" style="position: relative;">
+                <a href="@Url.Action("Character", "Genshin", new { char_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                    <img class="image fit" src="@item.Image_Small" />
+                    <h3 class="char-name">@item.Name.ToUpper()</h3>
+                    <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
+                    @{
+                        var img_name = item.Element + ".png";
+                        <img class="elem_img" src="~/images/@img_name" />
                     }
-                </div>
+                </a>
             </div>
-        </div>
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-                <h2>Etiam veroeros lorem</h2>
-                <p>Pellentesque eleifend malesuada efficitur. Curabitur volutpat dui mi, ac imperdiet dolor tincidunt nec. Ut erat lectus, dictum sit amet lectus a, aliquet rutrum mauris. Etiam nec lectus hendrerit, consectetur risus viverra, iaculis orci. Phasellus eu nibh ut mi luctus auctor. Donec sit amet dolor in diam feugiat venenatis. </p>
-                <ul class="icons">
-                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-                </ul>
-                <p class="copyright">&copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com/">Unsplash</a>. Videos: <a href="http://coverr.co/">Coverr</a>.</p>
-            </div>
-        </footer>
+        }
     </div>
-
-
-    <script>
-        var isOpen = false;
-
-        function switchNav() {
-            if (isOpen) {
-                closeNav();
-                isOpen = false;
-            } else {
-                openNav();
-                isOpen = true;
-            }
-        }
-
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
-    </script>
-    <script src="~/assets/js/jquery.min.js"></script>
-    <script src="~/assets/js/jquery.scrolly.min.js"></script>
-    <script src="~/assets/js/jquery.poptrox.min.js"></script>
-    <script src="~/assets/js/skel.min.js"></script>
-    <script src="~/assets/js/util.js"></script>
-    <script src="~/assets/js/main.js"></script>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-</body>
-</html>
+</div>
