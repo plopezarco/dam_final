@@ -107,7 +107,8 @@ body, input, select, textarea {
     font-size: 14pt;
     font-weight: 300;
     line-height: 1.65;
-}-->
+}
+-->
 
 @media screen and (max-width: 1680px) {
 
@@ -325,14 +326,56 @@ header h6 + p {
         margin: 0 1em 2em 1em;
         width: 30%;
     }
+
+
     .thumbnails .big_box {
+        border-radius: 2px;
+        background: rgba(0,0,0,0.2);
+        text-align: center;
         margin: 0 1em 2em 1em;
-        width: 70%;
+        width: 90%;
+    }
+
+    .thumbnails .weapon_box {
+        margin: 0 1em 2em 1em;
+        width: 22%;
+        position: relative;
+    }
+
+        .thumbnails .weapon_box .weapon {
+            background: rgba(0,0,0,0.2);
+            padding: 10%;
+        }
+
+    .thumbnails .charac_data_box {
+        border-radius: 2px;
+        background: rgba(0,0,0,0.2);
+        text-align: left;
+        margin: 0 1em 1em 1em;
+        width: 43.7%;
+        padding: 2em;
+    }
+
+    .thumbnails .weapon_data_box {
+        border-radius: 2px;
+        background: rgba(0,0,0,0.2);
+        text-align: left;
+        margin: 0 1em 1em 1em;
+        width: 65%;
+        padding: 2em;
+    }
+
+    .thumbnails .charac_data_big_box {
+        border-radius: 2px;
+        background: rgba(0,0,0,0.2);
+        text-align: left;
+        margin: 0 1em 1em 1em;
+        width: 90%;
+        padding: 2em;
     }
 
 
 @media screen and (max-width: 1280px) {
-
     .thumbnails .box {
         width: 45%;
     }
@@ -641,7 +684,6 @@ input[type="radio"] {
 
     .image.fit {
         display: block;
-        margin: 0 0 2em 0;
         width: 100%;
     }
 
@@ -1423,7 +1465,7 @@ body.is-loading #banner:before {
     }
 
 .openbtn {
-    margin:16px;
+    margin: 16px;
     border-radius: 2px;
     background: rgba(0,0,0,0.2);
     font-size: 20px;
@@ -1439,6 +1481,25 @@ body.is-loading #banner:before {
         background-color: #444;
     }
 
+
+.filteropenbtn {
+    margin: 0 1em 1em 1em;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.2);
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    padding: 10px 15px;
+    height: 2.85em;
+    line-height: 0;
+    border: none;
+}
+
+    .filteropenbtn:hover {
+        background-color: #444;
+    }
+
+
 #main {
     transition: margin-left .5s;
 }
@@ -1448,6 +1509,11 @@ body.is-loading #banner:before {
     top: 5%;
     left: 5%;
 }
+
+    .char-name.big {
+        color: white;
+        font-size: 200%
+    }
 
 .char-text {
     position: absolute;
@@ -1461,4 +1527,58 @@ body.is-loading #banner:before {
     left: 5%;
     width: 12%;
     height: 35%;
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    margin: 1em;
+    text-align: center;
+}
+
+    .tab div {
+        background: rgba(0,0,0,0.2);
+        display: inline-block;
+        margin: auto;
+    }
+/* Style the buttons inside the tab */
+.tab_button {
+    float: left;
+    background: rgba(0,0,0,0.2);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: genshin_font;
+    font-size: 21px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background: rgba(255,255,255,0.1);
+}
+
+.tabcontent {
+    display: none;
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.white_hover:hover {
+    background: rgba(255,255,255,0.1);
 }

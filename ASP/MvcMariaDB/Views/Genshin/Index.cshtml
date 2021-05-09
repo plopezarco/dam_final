@@ -1,4 +1,5 @@
 ﻿@{
+    ViewBag.Title = "Genshin Impact";
     Layout = "";
 }
 <!DOCTYPE html>
@@ -37,7 +38,7 @@
                     <div class="inner">
                         <h3>Weapons</h3>
                         <p>Weapon dictate what your character's main focus and roles will be in a battle. Due to the different weapon types, there will be characters that specialize at close range or long range combat.</p>
-                        <a href="https://youtu.be/zbzM4Rz7wnw" class="button fit" data-poptrox="youtube,800x400">Watch</a>
+                        <a href="@Url.Action("WeaponList", "Genshin")" class="button style3 fit" data-poptrox="youtube,800x400">See Weapons</a>
                     </div>
                 </div>
 

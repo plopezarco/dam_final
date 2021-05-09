@@ -5,9 +5,48 @@
 <div class="inner">
     <!-- Boxes -->
     <div class="thumbnails">
-        <div class="big_box">
-            <p>@Model.Name</p>
+        <div class="big_box" style="position: relative;">
+            <p class="char-name big">@Model.Name.ToUpper()</p>
             <img class="image fit" src="@Model.Image" />
         </div>
+    </div>
+
+    <div class="thumbnails">
+
+        <div class="charac_data_box">
+            <h3>CHARACTER</h3>
+            <ul>
+                <li>
+                    <strong>Star Rank:</strong> @Model.Rarity @for (int i = 0; i < Model.Rarity; i++)
+                    {
+                        <span>✦</span>
+                    }
+                </li>
+                <li><strong>Title:</strong> @Model.Title </li>
+                <li><strong>Organization / Circle:</strong> @Model.Organization </li>
+                <li><strong>Origin:</strong> @Model.Region </li>
+                <li><strong>Constellation:</strong> @Model.Constellation </li>
+                <li>
+                    <strong>Vision / Element:</strong> @Model.Element
+                </li>
+                <li><strong>Weapon:</strong> @Model.Weapon </li>
+                <li><strong>Primary Attribute:</strong> @Model.Primary_Attribute </li>
+            </ul>
+        </div>
+        <div class="charac_data_box">
+            <h3>INFORMATION</h3>
+            <ul>
+                <li><strong>Gender:</strong> @Model.Gender </li>
+                <li><strong>Birthday:</strong> @Model.Birthday </li>
+                <li><strong>Bodytype:</strong> @Model.Bodytype </li>
+                <li><strong>Voice Actor Japanese:</strong> @Model.Seiyuu </li>
+            </ul>
+        </div>
+
+        <div class="charac_data_big_box">
+            <h3>DESCRIPTION</h3>
+            @Model.Description
+        </div>
+
     </div>
 </div>

@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Weapons";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner">
+    <!-- Boxes -->
+    <div class="tab">
+        <div>
+            <button class="tab_button" onclick="openWeapon(event, 'Sword')" id="defaultOpen">SWORD</button>
+            <button class="tab_button" onclick="openWeapon(event, 'Claymore')">CLAYMORE</button>
+            <button class="tab_button" onclick="openWeapon(event, 'Bow')">BOW</button>
+            <button class="tab_button" onclick="openWeapon(event, 'Catalyst')">CATALYST</button>
+            <button class="tab_button" onclick="openWeapon(event, 'Polearm')">POLEARM</button>
+        </div>
+    </div>
+
+    <div class="thumbnails tabcontent" id="Sword">
+        @foreach (var item in Model)
+        {
+            if (item.Weapon_Type == "Sword")
+            {
+                <div class="weapon_box white_hover">
+                    <a href="@Url.Action("Weapon", "Genshin", new { weapon_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                        <img class="weapon image fit" src="@item.Image" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="thumbnails tabcontent" id="Claymore">
+        @foreach (var item in Model)
+        {
+            if (item.Weapon_Type == "Claymore")
+            {
+                <div class="weapon_box white_hover">
+                    <a href="@Url.Action("Weapon", "Genshin", new { weapon_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                        <img class="weapon image fit" src="@item.Image" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="thumbnails tabcontent" id="Bow">
+        @foreach (var item in Model)
+        {
+            if (item.Weapon_Type == "Bow")
+            {<div class="weapon_box white_hover">
+                    <a href="@Url.Action("Weapon", "Genshin", new { weapon_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                        <img class="weapon image fit" src="@item.Image" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="thumbnails tabcontent" id="Catalyst">
+        @foreach (var item in Model)
+        {
+            if (item.Weapon_Type == "Catalyst")
+            {
+                <div class="weapon_box white_hover">
+                    <a href="@Url.Action("Weapon", "Genshin", new { weapon_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                        <img class="weapon image fit" src="@item.Image" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="thumbnails tabcontent" id="Polearm">
+        @foreach (var item in Model)
+        {
+            if (item.Weapon_Type == "Polearm")
+            {
+                <div class="weapon_box white_hover">
+                    <a href="@Url.Action("Weapon", "Genshin", new { weapon_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                        <img class="weapon image fit" src="@item.Image" />
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<script>
+    document.getElementById("defaultOpen").click();
+
+    function openWeapon(evt, weaponType) {
+        var i, tabcontent, tablinks;
+
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName("tab_button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(weaponType).style.display = "flex";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+

@@ -15,13 +15,19 @@ namespace MvcMariaDB.Models
         public string Weapon { get; set; }
         public string Element { get; set; }
         public int Rarity { get; set; }
+        public string Title { get; set; }
+        public string Organization { get; set; }
+        public string Constellation { get; set; }
+        public string Primary_Attribute { get; set; }
+        public string Gender { get; set; }
+        public string Bodytype { get; set; }
         public string Birthday { get; set; }
         public string Seiyuu { get; set; }
         public string Region { get; set; }
         public string Description { get; set; }
         public string Image_Small { get; set; }
         public string Image { get; set; }
-        private static List<Characters> Characters_List { get; set; }
+        public static List<Characters> Characters_List { get; set; }
 
         public static List<Characters> GetCharacters()
         {
@@ -29,7 +35,7 @@ namespace MvcMariaDB.Models
             DataSet dsCharacter = new DataSet();
             SqlDataAdapter daCharacter = new SqlDataAdapter();
             SqlCommand oSql = new SqlCommand();
-            oSql.CommandText = "SELECT [character_id],[character_name],[weapon],[element],[rarity],[birthday],[seiyuu],[region],[character_description],[image_small],[image_big] FROM Characters ORDER BY Character_Name";
+            oSql.CommandText = "SELECT * FROM Characters ORDER BY Character_Name";
 
             oSql.Connection = konexioa.conn;
             daCharacter.SelectCommand = oSql;
@@ -44,6 +50,12 @@ namespace MvcMariaDB.Models
                 charac.Weapon = lerro["weapon"].ToString();
                 charac.Element = lerro["element"].ToString();
                 charac.Rarity = int.Parse(lerro["rarity"].ToString());
+                charac.Title = lerro["title"].ToString();
+                charac.Organization = lerro["organization"].ToString();
+                charac.Constellation = lerro["constellation"].ToString();
+                charac.Primary_Attribute = lerro["primary_attribute"].ToString();
+                charac.Gender = lerro["gender"].ToString();
+                charac.Bodytype = lerro["bodytype"].ToString();
                 charac.Birthday = lerro["birthday"].ToString();
                 charac.Seiyuu = lerro["seiyuu"].ToString();
                 charac.Region = lerro["region"].ToString();
@@ -54,11 +66,6 @@ namespace MvcMariaDB.Models
             }
             Characters_List = characterList;
             return characterList;
-        }
-
-        public static Characters GetCharacterById(int character_id)
-        {
-            return Characters_List.Where(p => p.Id == character_id).FirstOrDefault();
         }
     }
     class konexioa

@@ -1,20 +1,39 @@
-﻿
+﻿@{
+    ViewBag.Title = "Characters";
+}
+
 <div class="inner">
     <!-- Boxes -->
+
+    <button class="filteropenbtn" onclick="">∇ Filters</button>
+    <!--<div>
+        <div class="btn-group-justified" style="width:90%">
+            <button class="btn-default">All</button>
+            <button class="btn-default">Sword</button>
+            <button class="btn-default">Claymore</button>
+            <button class="btn-default">Bow</button>
+            <button class="btn-default">Catalyst</button>
+            <button class="btn-default">Polearm</button>
+        </div>
+        <div class="btn-group-justified"></div>
+        <div class="btn-group-justified"></div>
+    </div>-->
     <div class="thumbnails">
         @foreach (var item in Model)
         {
 
-            <div class="box" style="position: relative;">
-                <a href="@Url.Action("Character", "Genshin", new { char_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
-                    <img class="image fit" src="@item.Image_Small" />
-                    <h3 class="char-name">@item.Name.ToUpper()</h3>
-                    <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
-                    @{
-                        var img_name = item.Element + ".png";
-                        <img class="elem_img" src="~/images/@img_name" />
-                    }
-                </a>
+            <div class="box white_hover" style="position: relative;">
+                <div class="character">
+                    <a href="@Url.Action("Character", "Genshin", new { char_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                        <img class="image fit" src="@item.Image_Small" />
+                        <h3 class="char-name">@item.Name.ToUpper()</h3>
+                        <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
+                        @{
+                            var img_name = item.Element + ".png";
+                            <img class="elem_img" src="~/images/@img_name" />
+                        }
+                    </a>
+                </div>
             </div>
         }
     </div>

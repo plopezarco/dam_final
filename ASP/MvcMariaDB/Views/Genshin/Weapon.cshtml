@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = Model.Name;
+    Layout = "../Shared/_Layout.cshtml";
+}
+<div class="inner">
+    <!-- Boxes -->
+
+
+    <div class="thumbnails">
+
+        <div class="weapon_data_box">
+            <h3>@Model.Name.ToUpper()</h3>
+            <ul>
+                <li><strong>Type:</strong> @Model.Weapon_Type </li>
+                <li>
+                    <strong>Star Rank:</strong> @Model.Rarity @for (int i = 0; i < Model.Rarity; i++)
+                    {
+                        <span>✦</span>
+                    }
+                </li>
+                <li><strong>Base Damage:</strong> @Model.Base_Atk </li>
+                <li><strong>Primary Attribute:</strong> @Model.Sub_Stat_Value&nbsp;@Model.Sub_Stat_Name</li>
+                <li>
+                    <strong>Wielders:</strong>
+                    @{ foreach (var charac in Model.Wielders_List)
+                        {
+
+                            <a href="@Url.Action("Character", "Genshin", new { char_id = charac.Id})" class="fit" data-poptrox="youtube,800x400">
+                                @charac.Name
+                            </a>
+
+                        }
+                    }
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="" style="position: relative;">
+            <img class="image fit" src="@Model.Image" />
+        </div>
+
+        <div class="charac_data_box">
+            <h3>Weapon Ability</h3>
+            <ul>
+                <li>@Model.Weapon_Effect </li>
+            </ul>
+        </div>
+    </div>
+</div>

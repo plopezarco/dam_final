@@ -25,7 +25,22 @@ namespace MvcMariaDB.Controllers
 
         public ActionResult Character(int char_id)
         {
-            return View(Models.Characters.GetCharacterById(char_id));
+            return View(Models.Characters.Characters_List.Where(p => p.Id == char_id).FirstOrDefault());
+        }
+
+        public ActionResult WeaponList()
+        {
+            return View(Models.Weapon.GetWeapons());
+        }
+
+        public ActionResult Weapon(int weapon_id)
+        {
+            return View(Models.Weapon.Weapons_List.Where(p => p.Id == weapon_id).FirstOrDefault());
+        }
+
+        public ActionResult FilterWeapon(string weapon_type)
+        {
+            return View(Models.Weapon.Weapons_List.Where(p => p.Weapon_Type == weapon_type).ToList());
         }
     }
 }
