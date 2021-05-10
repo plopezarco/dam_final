@@ -18,9 +18,50 @@ namespace MvcMariaDB.Controllers
             return View();
         }
 
-        public ActionResult CharacterList() 
+        public ActionResult CharacterList(string searchString, FormCollection collection)
         {
-            return View(Models.Characters.GetCharacters());
+            var characters = Models.Characters.GetCharacters();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                characters = characters.Where(p => p.Name.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }
+
+            string weapon = collection["weapon"];
+            string element = collection["element"];
+            string rarity = collection["rarity"];
+
+
+            if (!String.IsNullOrEmpty(weapon) && weapon != "All")
+            {
+                characters = characters.Where(p => p.Weapon.ToUpper().Equals(weapon.ToUpper())).ToList();
+                ViewBag.Filter_Weapon = weapon;
+            }
+            else
+            {
+                ViewBag.Filter_Weapon = "All";
+            }
+
+            if (!String.IsNullOrEmpty(element) && element != "All")
+            {
+                characters = characters.Where(p => p.Element.ToUpper().Equals(element.ToUpper())).ToList();
+                ViewBag.Filter_Element = element;
+            }
+            else
+            {
+                ViewBag.Filter_Element = "All";
+            }
+
+            if (!String.IsNullOrEmpty(rarity) && rarity != "All")
+            {
+                characters = characters.Where(p => p.Rarity.ToString().Equals(rarity.ToString())).ToList();
+                ViewBag.Filter_Rarity = rarity.ToString();
+            }
+            else
+            {
+                ViewBag.Filter_Rarity = "All";
+            }
+
+            return View(characters);
         }
 
         public ActionResult Character(int char_id)
@@ -28,9 +69,24 @@ namespace MvcMariaDB.Controllers
             return View(Models.Characters.Characters_List.Where(p => p.Id == char_id).FirstOrDefault());
         }
 
-        public ActionResult WeaponList()
+        public ActionResult WeaponList(string weapon)
         {
-            return View(Models.Weapon.GetWeapons());
+            var weapons = Models.Weapon.GetWeapons();
+            if (!String.IsNullOrEmpty(weapon))
+            {
+                if (weapon != "ALL")
+                {
+                    weapons = weapons.Where(p => p.Weapon_Type.ToUpper() == weapon).ToList();
+
+                }
+                ViewBag.Weapon = weapon.ToString().ToUpper();
+            }
+            else
+            {
+                ViewBag.Weapon = "ALL";
+            }
+
+            return View(weapons);
         }
 
         public ActionResult Weapon(int weapon_id)
@@ -38,9 +94,9 @@ namespace MvcMariaDB.Controllers
             return View(Models.Weapon.Weapons_List.Where(p => p.Id == weapon_id).FirstOrDefault());
         }
 
-        public ActionResult FilterWeapon(string weapon_type)
+        public ActionResult Faq()
         {
-            return View(Models.Weapon.Weapons_List.Where(p => p.Weapon_Type == weapon_type).ToList());
+            return View();
         }
     }
 }

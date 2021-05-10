@@ -4,37 +4,133 @@
 
 <div class="inner">
     <!-- Boxes -->
-
-    <button class="filteropenbtn" onclick="">∇ Filters</button>
-    <!--<div>
-        <div class="btn-group-justified" style="width:90%">
-            <button class="btn-default">All</button>
-            <button class="btn-default">Sword</button>
-            <button class="btn-default">Claymore</button>
-            <button class="btn-default">Bow</button>
-            <button class="btn-default">Catalyst</button>
-            <button class="btn-default">Polearm</button>
-        </div>
-        <div class="btn-group-justified"></div>
-        <div class="btn-group-justified"></div>
-    </div>-->
     <div class="thumbnails">
-        @foreach (var item in Model)
+        @using (Html.BeginForm())
         {
 
-            <div class="box white_hover" style="position: relative;">
-                <div class="character">
-                    <a href="@Url.Action("Character", "Genshin", new { char_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
-                        <img class="image fit" src="@item.Image_Small" />
-                        <h3 class="char-name">@item.Name.ToUpper()</h3>
-                        <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
-                        @{
-                            var img_name = item.Element + ".png";
-                            <img class="elem_img" src="~/images/@img_name" />
-                        }
-                    </a>
-                </div>
+            <!--Find by name: @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+            <input type="submit" value="Clear" />-->
+            <div class="large_box">
+                <ul class="radio_ul">
+                    <li>
+                        <p class="filter_name">Weapon:&nbsp;</p>
+                    </li>
+                    <li>
+                        <input type="radio" id="AllWeapon" name="weapon" value="All" @(ViewBag.Filter_Weapon == "All" ? "checked" : "")>
+                        <label for="AllWeapon">All</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Sword" name="weapon" value="Sword" @(ViewBag.Filter_Weapon == "Sword" ? "checked" : "")>
+                        <label for="Sword">Sword</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Claymore" name="weapon" value="Claymore" @(ViewBag.Filter_Weapon == "Claymore" ? "checked" : "")>
+                        <label for="Claymore">Claymore</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Bow" name="weapon" value="Bow" @(ViewBag.Filter_Weapon == "Bow" ? "checked" : "")>
+                        <label for="Bow">Bow</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Catalyst" name="weapon" value="Catalyst" @(ViewBag.Filter_Weapon == "Catalyst" ? "checked" : "")>
+                        <label for="Catalyst">Catalyst</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Polearm" name="weapon" value="Polearm" @(ViewBag.Filter_Weapon == "Polearm" ? "checked" : "")>
+                        <label for="Polearm">Polearm</label>
+                    </li>
+                </ul>
             </div>
+            <div class="large_box">
+                <ul class="radio_ul">
+                    <li>
+                        <p class="filter_name">Element:&nbsp;</p>
+                    </li>
+                    <li>
+                        <input type="radio" id="AllElement" name="element" value="All" @(ViewBag.Filter_Element == "All" ? "checked" : "")>
+                        <label for="AllElement">All</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Anemo" name="element" value="Anemo" @(ViewBag.Filter_Element == "Anemo" ? "checked" : "")>
+                        <label for="Anemo">Anemo</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Cryo" name="element" value="Cryo" @(ViewBag.Filter_Element == "Cryo" ? "checked" : "")>
+                        <label for="Cryo">Cryo</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Dendro" name="element" value="Dendro" @(ViewBag.Filter_Element == "Dendro" ? "checked" : "")>
+                        <label for="Dendro">Dendro</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Electro" name="element" value="Electro" @(ViewBag.Filter_Element == "Electro" ? "checked" : "")>
+                        <label for="Electro">Electro</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Geo" name="element" value="Geo" @(ViewBag.Filter_Element == "Geo" ? "checked" : "")>
+                        <label for="Geo">Geo</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Hydro" name="element" value="Hydro" @(ViewBag.Filter_Element == "Hydro" ? "checked" : "")>
+                        <label for="Hydro">Hydro</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="Pyro" name="element" value="Pyro" @(ViewBag.Filter_Element == "Pyro" ? "checked" : "")>
+                        <label for="Pyro">Pyro</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="large_box">
+                <ul class="radio_ul">
+                    <li>
+                        <p class="filter_name">Rarity:&nbsp;</p>
+                    </li>
+                    <li>
+                        <input type="radio" id="AllRarity" name="rarity" value="All" @(ViewBag.Filter_Rarity == "All" ? "checked" : "")>
+                        <label for="AllRarity">All</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="4" name="rarity" value="4" @(ViewBag.Filter_Rarity == "4" ? "checked" : "")>
+                        <label for="4">4 Star</label>
+                    </li>
+                    <li>
+                        <input type="radio" id="5" name="rarity" value="5" @(ViewBag.Filter_Rarity == "5" ? "checked" : "")>
+                        <label for="5">5 Star</label>
+                    </li>
+                </ul>
+            </div>
+
+            <input type="submit" value="Search" />
+
         }
+        </div>
+        <div class="thumbnails">
+
+            @{ if (Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+
+                        <div class="box white_hover" style="position: relative;">
+                            <div class="character">
+                                <a href="@Url.Action("Character", "Genshin", new { char_id = item.Id })" class="fit" data-poptrox="youtube,800x400">
+                                    <img class="image fit" src="@item.Image_Small" />
+                                    <h3 class="char-name">@item.Name.ToUpper()</h3>
+                                    <h4 class="char-text">@item.Rarity ✦ @item.Element.ToUpper()</h4>
+                                    @{
+                                        var img_name = item.Element + ".png";
+                                        <img class="elem_img" src="~/images/@img_name" />
+                                    }
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h4>No Character Found</h4>
+                }
+            }
+        </div>
     </div>
-</div>

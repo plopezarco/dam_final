@@ -223,6 +223,7 @@
     <Content Include="Views\Genshin\CharacterList.cshtml" />
     <Content Include="Views\Genshin\WeaponList.cshtml" />
     <Content Include="Views\Genshin\Weapon.cshtml" />
+    <Content Include="Views\Genshin\Faq.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
