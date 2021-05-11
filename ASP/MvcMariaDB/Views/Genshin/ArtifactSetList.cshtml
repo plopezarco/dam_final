@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Artifact Sets";
+}
+
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+
+        @foreach (var item in Model)
+        {
+            <div class="box">
+                <div class="artifact">
+                    <h3 class="artifact-name">@item.Name.ToUpper() (@item.MaxRarity✦)</h3>
+                    <img class="image fit" src="@item.Image" />
+                    <hr style="margin-top:-20px"/>
+                    <h4>Set Bonus:</h4>
+                    <ul class="wielders_ul small">
+                        <li><strong>2 pieces:</strong><p class="justify">@item.TwoPieceBonus</p></li>
+                        <li><strong>4 pieces:</strong><p class="justify">@item.FourPieceBonus</p></li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>

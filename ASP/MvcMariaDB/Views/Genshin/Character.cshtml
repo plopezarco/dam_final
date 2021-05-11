@@ -15,12 +15,11 @@
 
         <div class="charac_data_box">
             <h3>CHARACTER</h3>
-            <ul>
+            <ul class="wielders_ul">
                 <li>
-                    <strong>Star Rank:</strong> @Model.Rarity @for (int i = 0; i < Model.Rarity; i++)
-                    {
-                        <span>✦</span>
-                    }
+                    <strong>Star Rank:</strong> @Model.Rarity
+                    @for (int i = 0; i < Model.Rarity; i++)
+                    {<span>✦</span>}
                 </li>
                 <li><strong>Title:</strong> @Model.Title </li>
                 <li><strong>Organization / Circle:</strong> @Model.Organization </li>
@@ -35,7 +34,7 @@
         </div>
         <div class="charac_data_box">
             <h3>INFORMATION</h3>
-            <ul>
+            <ul class="wielders_ul">
                 <li><strong>Gender:</strong> @Model.Gender </li>
                 <li><strong>Birthday:</strong> @Model.Birthday </li>
                 <li><strong>Bodytype:</strong> @Model.Bodytype </li>

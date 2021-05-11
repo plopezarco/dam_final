@@ -152,6 +152,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArtifactSet.cs" />
     <Compile Include="Models\Characters.cs" />
     <Compile Include="Models\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,8 +167,6 @@
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\jquery.poptrox.min.js" />
     <Content Include="assets\js\jquery.scrolly.min.js" />
-    <Content Include="assets\js\main.js" />
-    <Content Include="assets\js\skel.min.js" />
     <Content Include="assets\js\util.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -224,6 +223,8 @@
     <Content Include="Views\Genshin\WeaponList.cshtml" />
     <Content Include="Views\Genshin\Weapon.cshtml" />
     <Content Include="Views\Genshin\Faq.cshtml" />
+    <Content Include="Views\Genshin\ArtifactSetList.cshtml" />
+    <Content Include="Views\Genshin\Artifact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

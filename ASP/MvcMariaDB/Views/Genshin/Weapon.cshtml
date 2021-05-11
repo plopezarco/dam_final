@@ -1,49 +1,65 @@
 ﻿@{
     ViewBag.Title = Model.Name;
-    Layout = "../Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="inner">
-    <!-- Boxes -->
-
-
     <div class="thumbnails">
 
-        <div class="weapon_data_box">
+        <div class="charac_data_box">
+
             <h3>@Model.Name.ToUpper()</h3>
-            <ul>
+            <ul class="wielders_ul">
                 <li><strong>Type:</strong> @Model.Weapon_Type </li>
                 <li>
-                    <strong>Star Rank:</strong> @Model.Rarity @for (int i = 0; i < Model.Rarity; i++)
+                    <strong>Star Rank:</strong> @Model.Rarity
+                    @for (int i = 0; i < Model.Rarity; i++)
                     {
                         <span>✦</span>
                     }
                 </li>
                 <li><strong>Base Damage:</strong> @Model.Base_Atk </li>
-                <li><strong>Primary Attribute:</strong> @Model.Sub_Stat_Value&nbsp;@Model.Sub_Stat_Name</li>
                 <li>
-                    <strong>Wielders:</strong>
-                    @{ foreach (var charac in Model.Wielders_List)
-                        {
-
-                            <a href="@Url.Action("Character", "Genshin", new { char_id = charac.Id})" class="fit" data-poptrox="youtube,800x400">
-                                @charac.Name
-                            </a>
-
-                        }
+                    <strong>Primary Attribute:</strong>
+                    @if (Model.Sub_Stat_Value != "" && Model.Sub_Stat_Name != "")
+                    {
+                        <span>@Model.Sub_Stat_Value&nbsp;@Model.Sub_Stat_Name</span>
                     }
-
+                    else
+                    {
+                        <span>None</span>
+                    }
                 </li>
             </ul>
         </div>
-
-        <div class="" style="position: relative;">
+        <div class="charac_data_box" ">
             <img class="image fit" src="@Model.Image" />
         </div>
-
         <div class="charac_data_box">
             <h3>Weapon Ability</h3>
-            <ul>
-                <li>@Model.Weapon_Effect </li>
+            <ul class="wielders_ul">
+                <li>
+                    @if (Model.Weapon_Effect != "")
+                    {
+                        <span>@Model.Weapon_Effect</span>
+                    }
+                    else
+                    {
+                        <span>None</span>
+                    }
+                </li>
+            </ul>
+        </div>
+        <div class="charac_data_box">
+            <h3>Wielders</h3>
+            <ul class="wielders_ul">
+                @foreach (var charac in Model.Wielders_List)
+                {
+                    <li>
+                        <a href="@Url.Action("Character", "Genshin", new { char_id = charac.Id })">
+                            @charac.Name, @charac.Rarity✦ @charac.Element
+                        </a>
+                    </li>
+                }
             </ul>
         </div>
     </div>

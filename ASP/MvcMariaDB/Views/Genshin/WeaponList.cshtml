@@ -23,7 +23,7 @@
         @foreach (var item in Model)
         {
             <div class="weapon_box white_hover">
-                <a href="@Url.Action("Weapon", "Genshin", new { weapon_id = item.Id})" class="fit" data-poptrox="youtube,800x400">
+                <a href="@Url.Action("Weapon", "Genshin", new { weapon_id = item.Id})" class="fit">
                     <img class="weapon image fit" src="@item.Image" />
                 </a>
             </div>

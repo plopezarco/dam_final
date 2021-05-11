@@ -18,9 +18,17 @@ namespace MvcMariaDB.Controllers
             return View();
         }
 
-        public ActionResult CharacterList(string searchString, FormCollection collection)
+        public ActionResult CharacterList(string searchString, FormCollection collection, string button)
         {
             var characters = Models.Characters.GetCharacters();
+            if(button == "Clear")
+            {
+                ModelState.Clear();
+                searchString = null;
+                collection["weapon"] = "All";
+                collection["element"] = "All";
+                collection["rarity"] = "All";
+            }
             if (!String.IsNullOrEmpty(searchString))
             {
                 characters = characters.Where(p => p.Name.ToUpper().Contains(searchString.ToUpper())).ToList();
@@ -66,7 +74,7 @@ namespace MvcMariaDB.Controllers
 
         public ActionResult Character(int char_id)
         {
-            return View(Models.Characters.Characters_List.Where(p => p.Id == char_id).FirstOrDefault());
+            return View(Models.Characters.GetCharacters().Where(p => p.Id == char_id).FirstOrDefault());
         }
 
         public ActionResult WeaponList(string weapon)
@@ -91,7 +99,13 @@ namespace MvcMariaDB.Controllers
 
         public ActionResult Weapon(int weapon_id)
         {
-            return View(Models.Weapon.Weapons_List.Where(p => p.Id == weapon_id).FirstOrDefault());
+            return View(Models.Weapon.GetWeapons().Where(p => p.Id == weapon_id).FirstOrDefault());
+        }
+
+        public ActionResult ArtifactSetList()
+        {
+            var artifactSets = Models.ArtifactSet.GetArtifactSets();
+            return View(artifactSets);
         }
 
         public ActionResult Faq()
