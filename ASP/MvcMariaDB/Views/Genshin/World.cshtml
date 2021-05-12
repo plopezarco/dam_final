@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "World";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+        <div class="big_box">
+            <h3 class="title">THE WORLD</h3>
+            <div class="text">
+                <p>Teyvat is the vast, completely open world in which Genshin Impact takes place. The land is home to a variety of cultures and landscapes. There are cities, harbors, townships, and ancient ruins. There are coasts, cliffs, marshes, and mountain ranges. There is so much to do and explore! <br />
+                <p>Because the world is so full, it can be easy to lose track of things. <a class="link" href="https://genshin-impact-map.appsample.com/#/" target="_blank">Here</a> is an incredibly useful interactive map. It has the locations of hundreds of important locations, treasure chests, monsters, and useful items.</p>
+            </div>
+        </div>
+        <div class="big_box">
+            <h3 class="title">MONDSTADT</h3>
+            <div style="padding:2%;">
+                <img class="image fit" src="~/images/Mondstadt.jpg" />
+            </div>
+            <div class="text">
+                <p>
+                    A city of freedom that lies in the northeast of Teyvat.<br />
+                    From amongst mountains and wide-open plains, carefree breezes carry the scent of dandelions — a gift from the Anemo God, Barbatos — across Cider Lake to Mondstadt, which sits on an island in the middle of the lake.
+                </p>
+                Characters:
+                <ul class="wielders_ul" style="columns: 4; -webkit-columns: 4; -moz-columns: 4;">
+                    @foreach (var charac in Model)
+                    {
+                        if (charac.Region == "Mondstadt")
+                        {
+                            <li>
+                                <a href="@Url.Action("Character", "Genshin", new { char_id = charac.Id })">
+                                    @charac.Name, @charac.Rarity✦ @charac.Element
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+                <br />
+            </div>
+
+        </div>
+        <div class="big_box">
+            <h3 class="title">LIYUE</h3>
+            <div style="padding:2%;">
+                <img class="image fit" src="~/images/Liyue.jpg" />
+            </div>
+            <div class="text">
+                <p>
+                    A bountiful harbor that lies in the east of Teyvat.<br />
+                    Mountains stand tall and proud alongside the stone forest, that together with the open plains and lively rivers make up Liyue's bountiful landscape, which shows its unique beauty through each of the four seasons. Just how many gifts from the Geo God lie in wait amongst the rocks of Liyue's mountains?
+                </p>
+                Characters:
+                <ul class="wielders_ul" style="columns: 4; -webkit-columns: 4; -moz-columns: 4;">
+                    @foreach (var charac in Model)
+                    {
+                        if (charac.Region == "Liyue")
+                        {
+                            <li>
+                                <a href="@Url.Action("Character", "Genshin", new { char_id = charac.Id })">
+                                    @charac.Name, @charac.Rarity✦ @charac.Element
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+                <br />
+            </div>
+        </div>
+    </div>

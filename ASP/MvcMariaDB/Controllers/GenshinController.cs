@@ -21,7 +21,7 @@ namespace MvcMariaDB.Controllers
         public ActionResult CharacterList(string searchString, FormCollection collection, string button)
         {
             var characters = Models.Characters.GetCharacters();
-            if(button == "Clear")
+            if (button == "Clear")
             {
                 ModelState.Clear();
                 searchString = null;
@@ -109,6 +109,28 @@ namespace MvcMariaDB.Controllers
         }
 
         public ActionResult Faq()
+        {
+            return View();
+        }
+
+        public ActionResult Game()
+        {
+            return View();
+        }
+
+        public ActionResult SystemRequirements()
+        {
+            return View();
+        }
+        public ActionResult Elements()
+        {
+            return View();
+        }
+        public ActionResult World()
+        {
+            return View(Models.Characters.GetCharacters());
+        }
+        public ActionResult AboutUs()
         {
             return View();
         }

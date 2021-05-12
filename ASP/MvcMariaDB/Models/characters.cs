@@ -37,7 +37,7 @@ namespace MvcMariaDB.Models
             SqlCommand oSql = new SqlCommand();
             oSql.CommandText = "SELECT * FROM Characters ORDER BY Character_Name";
 
-            oSql.Connection = konexioa.conn;
+            oSql.Connection = Connection.conn;
             daCharacter.SelectCommand = oSql;
             daCharacter.Fill(dsCharacter);
 
@@ -67,27 +67,5 @@ namespace MvcMariaDB.Models
             Characters_List = characterList;
             return characterList;
         }
-    }
-    class konexioa
-    {
-        public static string connString = ConfigurationManager.ConnectionStrings["GenshinConnectionString"].ConnectionString;
-        public static SqlConnection conn = new SqlConnection(connString);
-        public static string Connect()
-        {
-            string connection_error = "";
-            try { conn.Open(); }
-            catch (Exception ex)
-            { connection_error = ex.Message; }
-            return connection_error;
-        }
-        public static string Disconnect()
-        {
-            string connection_error = "";
-            try { conn.Close(); }
-            catch (Exception ex)
-            { connection_error = ex.Message; }
-            return connection_error;
-        }
-
     }
 }

@@ -149,11 +149,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GenshinController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArtifactSet.cs" />
     <Compile Include="Models\Characters.cs" />
+    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Models\Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,10 +180,50 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Anemo.png" />
     <Content Include="images\artifacts.png" />
     <Content Include="images\bg1.png" />
     <Content Include="images\characters.png" />
+    <Content Include="images\characters\Albedo.png" />
+    <Content Include="images\characters\Amber.png" />
+    <Content Include="images\characters\Barbara.png" />
+    <Content Include="images\characters\Beidou.png" />
+    <Content Include="images\characters\Bennett.png" />
+    <Content Include="images\characters\Chongyun.png" />
+    <Content Include="images\characters\Diluc.png" />
+    <Content Include="images\characters\Diona.png" />
+    <Content Include="images\characters\Fischl.png" />
+    <Content Include="images\characters\Ganyu.png" />
+    <Content Include="images\characters\HuTao.png" />
+    <Content Include="images\characters\Jean.png" />
+    <Content Include="images\characters\Kaeya.png" />
+    <Content Include="images\characters\Keqing.png" />
+    <Content Include="images\characters\Klee.png" />
+    <Content Include="images\characters\Lisa.png" />
+    <Content Include="images\characters\Mona.png" />
+    <Content Include="images\characters\Ningguang.png" />
+    <Content Include="images\characters\Noelle.png" />
+    <Content Include="images\characters\Qiqi.png" />
+    <Content Include="images\characters\Razor.png" />
+    <Content Include="images\characters\Rosaria.png" />
+    <Content Include="images\characters\Sucrose.png" />
+    <Content Include="images\characters\Tartaglia.png" />
+    <Content Include="images\characters\Venti.png" />
+    <Content Include="images\characters\Xiangling.png" />
+    <Content Include="images\characters\Xiao.png" />
+    <Content Include="images\characters\Xingqiu.png" />
+    <Content Include="images\characters\Xinyan.png" />
+    <Content Include="images\characters\Zhongli.png" />
+    <Content Include="images\Cryo.png" />
+    <Content Include="images\Dendro.png" />
+    <Content Include="images\Electro.png" />
+    <Content Include="images\Elemental_Reactions.jpg" />
+    <Content Include="images\Geo.png" />
+    <Content Include="images\Hydro.png" />
+    <Content Include="images\Liyue.jpg" />
+    <Content Include="images\Mondstadt.jpg" />
     <Content Include="images\mora.png" />
+    <Content Include="images\Pyro.png" />
     <Content Include="images\weapons.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -225,6 +268,13 @@
     <Content Include="Views\Genshin\Faq.cshtml" />
     <Content Include="Views\Genshin\ArtifactSetList.cshtml" />
     <Content Include="Views\Genshin\Artifact.cshtml" />
+    <Content Include="Views\Genshin\Game.cshtml" />
+    <Content Include="Views\Genshin\SystemRequirements.cshtml" />
+    <Content Include="Views\Genshin\Elements.cshtml" />
+    <Content Include="Views\Genshin\World.cshtml" />
+    <Content Include="Views\Genshin\AboutUs.cshtml" />
+    <Content Include="Views\Users\UsersList.cshtml" />
+    <Content Include="Views\Users\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

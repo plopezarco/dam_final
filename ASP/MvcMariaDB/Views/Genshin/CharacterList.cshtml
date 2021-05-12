@@ -138,11 +138,22 @@
 <script>
     function showhide() {
         var x = document.getElementById("filters");
-        if (window.getComputedStyle(x).display !== "none") {
-            x.style.display = "none";
+        if (x.classList.contains("show")) {
+            x.classList.remove("show");
         } else {
-            x.style.display = "inline-block";
+            x.classList.add("show");
         }
-        return false;
     }
+
+    document.addEventListener('animationstart', function (e) {
+        if (e.animationName === 'fade-in') {
+            e.target.classList.add('isvisible');
+        }
+    });
+
+    document.addEventListener('animationend', function (e) {
+        if (e.animationName === 'fade-out') {
+            e.target.classList.remove('isvisible');
+        }
+    });
 </script>

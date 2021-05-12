@@ -32,7 +32,7 @@ namespace MvcMariaDB.Models
             SqlCommand oSql = new SqlCommand();
             oSql.CommandText = "SELECT * FROM Weapons ORDER BY Rarity DESC";
 
-            oSql.Connection = konexioa.conn;
+            oSql.Connection = Connection.conn;
             daWeapon.SelectCommand = oSql;
             daWeapon.Fill(dsWeapon);
 

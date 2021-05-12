@@ -26,7 +26,7 @@ namespace MvcMariaDB.Models
             SqlCommand oSql = new SqlCommand();
             oSql.CommandText = "SELECT * FROM Artifact_Sets ORDER BY set_name";
 
-            oSql.Connection = konexioa.conn;
+            oSql.Connection = Connection.conn;
             daSets.SelectCommand = oSql;
             daSets.Fill(dsSet);
 
