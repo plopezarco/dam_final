@@ -7,7 +7,7 @@
 <div class="inner">
     <div class="tab">
         <div>
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("WeaponList", "Genshin"))
             {
                 <input class="tab_button @(ViewBag.Weapon == "ALL" ? "active" : "")" type="submit" value="ALL" name="weapon" />
                 <input class="tab_button @(ViewBag.Weapon == "SWORD" ? "active" : "")" type="submit" value="SWORD" name="weapon" />

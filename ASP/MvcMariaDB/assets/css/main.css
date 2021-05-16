@@ -284,7 +284,6 @@ header h6 + p {
         position: relative;
         margin: 0 1em 2em 1em;
         width: 30%;
-        padding: 2em;
     }
 
         .thumbnails .box .artifact {
@@ -755,6 +754,7 @@ body.is-loading #banner:before {
     }
 }
 
+
 .sidebar {
     border-radius: 2px;
     background: rgba(0,0,0,0.2);
@@ -1006,10 +1006,10 @@ body.is-loading #banner:before {
             animation: fade-in 1s;
         }
 
-        #filters.isvisible {
-            display: inline-block;
-            animation: fade-out 1s;
-        }
+    #filters.isvisible {
+        display: inline-block;
+        animation: fade-out 1s;
+    }
 
 @keyframes fade-in {
     from {
@@ -1030,6 +1030,7 @@ body.is-loading #banner:before {
         opacity: 0;
     }
 }
+
 .wielders_ul {
     list-style-type: square;
 }
@@ -1079,6 +1080,21 @@ body.is-loading #banner:before {
     text-align: justify;
 }
 
+.small_profile {
+    float: left;
+    padding: 2%;
+    width: 15%;
+    text-align: center;
+}
+
+.comment_content {
+    float: right;
+    padding: 2%;
+    width: 85%;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
 .intro {
     border-left: 2px solid white;
     padding-left: 2%;
@@ -1112,13 +1128,13 @@ body.is-loading #banner:before {
     border: 5px solid white;
 }
 
-.link2{
+.link2 {
     text-decoration: none;
     border: 0;
     color: rgba(255,255,255,0.7);
 }
 
-.link2:hover {
-    text-decoration: underline;
-    color: white;
-}
+    .link2:hover {
+        text-decoration: underline;
+        color: white;
+    }

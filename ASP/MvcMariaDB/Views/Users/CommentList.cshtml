@@ -1,0 +1,86 @@
+﻿@model PagedList.IPagedList<MvcMariaDB.Models.Comment>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Forum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    ul {
+        list-style-type: none;
+        margin: auto;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+        li:last-child {
+            border-right: none;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            li a:hover:not(.active) {
+                background-color: rgba(255,255,255,0.1);
+            }
+
+    .active {
+        background-color: rgba(255,255,255,0.1);
+    }
+</style>
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+        <div class="big_box">
+            <div class="text">
+                @using (Html.BeginForm("SendComment", "Users"))
+                {
+                    @Html.AntiForgeryToken()
+                    <label class="title" style="text-align:left">Comment:</label>
+                    @Html.TextArea("Content", new { @class = "form-control", @placeholder = "Write your comment here...", @style = "resize:none", @maxlength = "1000" })
+                    <span class="focus-input100"></span>
+                    if (Session["Validation"] != null)
+                    {
+                        <span>Please write something in the box first</span>
+                        Session["Validation"] = true;
+                    }
+                    <br />
+                    <input type="submit" value="Send" class="white_button">
+                }
+            </div>
+        </div>
+        @foreach (var comment in Model)
+        {
+            <div class="big_box">
+                <div class="small_profile  white_hover">
+                    <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2">
+                        @if (comment.User.Profile_Picture != null)
+                        {
+                            <img class="image avatar fit" src="~/images/characters/@(comment.User.Profile_Picture).png">
+                        }
+                    </a>
+                </div>
+                <div class="comment_content">
+                    <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2" style="font-size:1.3vw; color:white;">
+                        @comment.User.Username
+                    </a>
+                    &nbsp;&nbsp;
+                    <span style="font-size: 0.8vw;">@comment.DateTime.ToString("dd/MM/yyyy")</span>
+                    <p>@comment.Content</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="align-center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("CommentList", new { page }))
+    </div>
+</div>

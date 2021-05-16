@@ -19,6 +19,7 @@
         @if (Session["CurrentUser"] == null)
         {
             <a href="@Url.Action("Login", "Users")">Login</a>
+            <a href="@Url.Action("Register", "Users")">Register</a>
         }
         else
         {
@@ -36,6 +37,10 @@
         <a href="@Url.Action("Elements", "Genshin")">Elements</a>
         <a href="@Url.Action("World", "Genshin")">World</a>
         <hr />
+        @if (Session["CurrentUser"] != null)
+        {
+            <a href="@Url.Action("CommentList", "Users")">Forum</a>
+        }
         <a href="@Url.Action("Faq", "Genshin")">FAQ</a>
         <a href="@Url.Action("AboutUs", "Genshin")">About Us</a>
     </div>

@@ -11,10 +11,10 @@
             <div class="text">
                 @using (Html.BeginForm("CheckLogin", "Users"))
                 {
-                    <label for="user" class="title">Username:</label>
+                    <label for="user" class="title" style="text-align:left">Username:</label>
                     <input type="text" id="user" name="user">
                     <br>
-                    <label for="pass" class="title">Password:</label>
+                    <label for="pass" class="title" style="text-align:left">Password:</label>
                     <input type="password" id="pass" name="pass">
                     <br>
                     if (Session["LoginSuccess"] != null)

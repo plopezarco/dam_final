@@ -27,6 +27,16 @@
                         <span class="focus-input100"></span>
                     </div>
                     <br />
+                    if (Session["RegisterSuccess"] != null)
+                    {
+                        bool success = (bool)Session["RegisterSuccess"];
+                        if (!success)
+                        {
+                            <p>That username is already in use</p>
+                            Session["RegisterSuccess"] = true;
+                            Session["LoginSuccess"] = true;
+                        }
+                    }
                     <div class="align-center">
                         <input type="submit" value="Register" class="white_button">
                     </div>

@@ -11,6 +11,7 @@ namespace MvcMariaDB.Models
     public class Users
     {
         public int Id { get; set; }
+        [Required]
         [StringLength(9, ErrorMessage = "UID must be 9 numbers long", MinimumLength = 9)]
         public string UId { get; set; }
         [Required]
@@ -18,6 +19,7 @@ namespace MvcMariaDB.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
         public string Ign { get; set; }
         public int Adventure_Rank { get; set; }
         public int World_Level { get; set; }
@@ -57,7 +59,7 @@ namespace MvcMariaDB.Models
 
                 return user;
             }
-            catch (Exception e)
+            catch
             {
                 return null;
             }
@@ -104,7 +106,7 @@ namespace MvcMariaDB.Models
         {
             try
             {
-                String query = "insert into Users(username, password) values ('" + user.Username + "','" + user.Password + "')";
+                String query = $"insert into Users(username, password) values ('{user.Username}','{user.Password}')";
                 Connection.Connect();
                 SqlCommand command = new SqlCommand(query, Connection.conn);
                 command.ExecuteNonQuery();
@@ -135,7 +137,7 @@ namespace MvcMariaDB.Models
                 Users updatedUser = GetUserById(user.Id.ToString());
                 return updatedUser;
             }
-            catch (SqlException exception)
+            catch
             {
                 return null;
             }
@@ -145,14 +147,14 @@ namespace MvcMariaDB.Models
         {
             try
             {
-                String query = "delete from users where user_id='" + user.Id + "'";
+                String query = $"delete from users where user_id='{user.Id}'";
                 Connection.Connect();
                 SqlCommand command = new SqlCommand(query, Connection.conn);
                 command.ExecuteNonQuery();
 
                 return true;
             }
-            catch (Exception ex)
+            catch(Exception e)
             {
                 return false;
             }

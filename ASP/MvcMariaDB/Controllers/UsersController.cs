@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace MvcMariaDB.Controllers
 {
@@ -56,12 +57,17 @@ namespace MvcMariaDB.Controllers
             int result = Users.SaveUser(newUser);
             if (result == 1)
             {
+                newUser = Users.GetUser(newUser.Username, newUser.Password);
                 Session["CurrentUser"] = newUser;
+                Session["RegisterSuccess"] = true;
+                Session["LoginSuccess"] = true;
                 return RedirectToAction("Index", "Genshin");
             }
             else
             {
-                return View("Error");
+                Session["RegisterSuccess"] = false;
+                Session["LoginSuccess"] = false;
+                return RedirectToAction("Register", "Users");
             }
         }
 
@@ -73,6 +79,7 @@ namespace MvcMariaDB.Controllers
             {
                 return View(Users.GetUserById(id));
             }
+            ViewBag.ErrorMessage = "You need to log in first";
             return View("Error");
         }
         [HttpGet]
@@ -83,6 +90,7 @@ namespace MvcMariaDB.Controllers
             {
                 return View(Session["CurrentUser"]);
             }
+            ViewBag.ErrorMessage = "You need to log in first";
             return View("Error");
         }
         public ActionResult UpdateProfile(FormCollection collection, int user_id)
@@ -116,8 +124,52 @@ namespace MvcMariaDB.Controllers
             else
             {
                 Session["DeleteSuccess"] = false;
-                return RedirectToAction("UserProfile", "Users", new { id = deletedUser.Id });
+                ViewBag.ErrorMessage = "An error has ocurred while deleting the account";
+                return View("Error");
             }
+        }
+
+        public ActionResult CommentList(int? page)
+        {
+            if (Session["CurrentUser"] != null)
+            {
+                List<Comment> comments = Comment.GetCommentList();
+                if (comments != null)
+                {
+                    int pageSize = 5;
+                    int pageNumber = (page ?? 1);
+                    return View(comments.ToPagedList(pageNumber, pageSize));
+                }
+            }
+            ViewBag.ErrorMessage = "You need to log in first";
+            return View("Error");
+        }
+
+        public ActionResult SendComment(FormCollection collection)
+        {
+            string commentString = collection["Content"].ToString();
+            if (Session["CurrentUser"] != null)
+            {
+                if (string.IsNullOrEmpty(commentString))
+                {
+                    Session["Validation"] = false;
+                    return RedirectToAction("CommentList", "Users");
+                }
+                Users currentUser = (Users)Session["CurrentUser"];
+                Comment comment = new Comment
+                {
+                    DateTime = DateTime.Now,
+                    User_Id = currentUser.Id,
+                    Content = commentString,
+                };
+                bool success = Comment.SaveComment(comment);
+                if (success)
+                {
+                    return RedirectToAction("CommentList", "Users");
+                }
+            }
+            ViewBag.ErrorMessage = "Your comment can't be saved";
+            return View("Error");
         }
     }
 }

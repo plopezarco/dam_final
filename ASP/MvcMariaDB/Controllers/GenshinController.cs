@@ -15,8 +15,6 @@ namespace MvcMariaDB.Controllers
             return View();
         }
 
-        [HttpGet]
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult CharacterList(string searchString, FormCollection collection, string button)
         {
             var characters = Models.Characters.GetCharacters();
@@ -70,15 +68,11 @@ namespace MvcMariaDB.Controllers
 
             return View(characters);
         }
-        [HttpGet]
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult Character(int char_id)
         {
             return View(Models.Characters.GetCharacters().Where(p => p.Id == char_id).FirstOrDefault());
         }
 
-        [HttpGet]
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult WeaponList(string weapon)
         {
             var weapons = Models.Weapon.GetWeapons();
@@ -98,15 +92,10 @@ namespace MvcMariaDB.Controllers
 
             return View(weapons);
         }
-        [HttpGet]
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult Weapon(int weapon_id)
         {
             return View(Models.Weapon.GetWeapons().Where(p => p.Id == weapon_id).FirstOrDefault());
         }
-
-        [HttpGet]
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public ActionResult ArtifactSetList()
         {
             var artifactSets = Models.ArtifactSet.GetArtifactSets();

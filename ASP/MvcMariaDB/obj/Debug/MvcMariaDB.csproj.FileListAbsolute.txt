@@ -100,6 +100,7 @@ D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CopyComplete
 D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.dll
 D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.pdb
 D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csprojAssemblyReference.cache
+D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CoreCompileInputs.cache
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MvcMariaDB.dll.config
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MvcMariaDB.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MvcMariaDB.pdb
@@ -159,6 +160,8 @@ D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\Microsoft.CodeDom.Providers.Dot
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\Microsoft.Web.Infrastructure.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MySqlConnector.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\Newtonsoft.Json.dll
+D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\PagedList.dll
+D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\PagedList.Mvc.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\System.Buffers.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\System.Memory.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\System.Numerics.Vectors.dll
@@ -175,6 +178,8 @@ D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\WebGrease.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\EntityFramework.xml
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\EntityFramework.SqlServer.xml
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MySqlConnector.xml
+D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\PagedList.xml
+D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\PagedList.Mvc.xml
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\System.Buffers.xml
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\System.Memory.xml
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\System.Numerics.Vectors.xml
@@ -197,7 +202,6 @@ D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.Razor.resources.d
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.WebPages.resources.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.WebPages.Razor.resources.dll
-D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CoreCompileInputs.cache
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CopyComplete
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.pdb
