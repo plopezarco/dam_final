@@ -284,10 +284,14 @@ header h6 + p {
         position: relative;
         margin: 0 1em 2em 1em;
         width: 30%;
+        padding: 2em;
     }
 
         .thumbnails .box .artifact {
             padding: 10%;
+            text-align: left;
+            margin: 0 1em 1em 1em;
+            padding: 2em;
         }
 
 
@@ -358,10 +362,12 @@ label {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
 select,
+option,
 textarea {
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -377,6 +383,11 @@ textarea {
     padding: 0 1em;
     text-decoration: none;
     width: 100%;
+}
+
+.option {
+    background-color: rgba(144, 144, 144, 0.075);
+    color: black;
 }
 
 input[type="checkbox"],
@@ -761,23 +772,27 @@ body.is-loading #banner:before {
     .sidebar a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
-        font-size: 25px;
-        color: #818181;
+        font-size: 1vw;
+        color: rgba(255,255,255,0.7);
         display: block;
         transition: 0.3s;
         border: 0;
     }
 
         .sidebar a:hover {
-            color: #f1f1f1;
+            color: white;
         }
 
     .sidebar .closebtn {
         position: absolute;
         top: 0;
         right: 25px;
-        font-size: 36px;
+        font-size: 2vw;
         margin-left: 50px;
+    }
+
+    .sidebar hr {
+        margin: 2%;
     }
 
 .openbtn {
@@ -1093,5 +1108,17 @@ body.is-loading #banner:before {
 
 .avatar {
     background: rgba(255,255,255,0.9);
-    border-radius: 50%
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.link2{
+    text-decoration: none;
+    border: 0;
+    color: rgba(255,255,255,0.7);
+}
+
+.link2:hover {
+    text-decoration: underline;
+    color: white;
 }

@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = Model.Username + "'s Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+        <div class="box">
+            <h3 class="title">@Model.Username</h3>
+            @if (Model.Profile_Picture != null)
+            {
+                <img class="image avatar" src="~/images/characters/@(Model.Profile_Picture).png">
+            }
+            else
+            {
+                <p class="align-center">No Profile Picture</p>
+            }
+            <div class="text">
+                <ul class="wielders_ul">
+                    <li>UID: @(Model.UId == null ? "Unknown" : Model.UId)</li>
+                    <li>In-Game Name: @(Model.Ign == null ? "Unknown" : Model.Ign)</li>
+                    <li>Adventure Rank: @(Model.Adventure_Rank == null ? "Unknown" : Model.Adventure_Rank)</li>
+                    <li>World Level: @(Model.World_Level == null ? "Unknown" : Model.World_Level)</li>
+                </ul>
+                @{MvcMariaDB.Models.Users currentUser = (MvcMariaDB.Models.Users)Session["CurrentUser"];
+                    if (currentUser.Id == Model.Id)
+                    {
+                        <a href="@Url.Action("MyProfile", "Users")" class="link2">Edit Profile</a>
+                        <a href="@Url.Action("DeleteUser", "Users")" class="link2" style="float:right" onclick = "return confirm('Are sure you want to delete your account?');">Delete Account</a>
+                    }
+                }
+                <br />
+
+            </div>
+        </div>
+    </div>
+</div>

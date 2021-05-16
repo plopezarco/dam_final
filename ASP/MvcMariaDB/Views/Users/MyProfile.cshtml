@@ -1,0 +1,65 @@
+﻿@model MvcMariaDB.Models.Users
+
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+        <div class="big_box">
+            <div class="text">
+                @using (Html.BeginForm("UpdateProfile", "Users", new { user_id = Model.Id }))
+                {
+                    @Html.AntiForgeryToken()
+                    <label class="title" style="text-align:left">Game UID:</label>
+                    <div class="wrap-input100 validate-input">
+                        @Html.EditorFor(model => model.UId, new { htmlAttributes = new { @class = "input100", @maxlength = "9" } })
+                        @Html.ValidationMessageFor(model => model.UId, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+                    <br />
+                    <label class="title" style="text-align:left">In-Game Name:</label>
+                    <div class="wrap-input100 validate-input">
+                        @Html.EditorFor(model => model.Ign, new { htmlAttributes = new { @class = "input100", @maxlength = "20" } })
+                        @Html.ValidationMessageFor(model => model.Ign, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+                    <br />
+                    <label class="title" style="text-align:left">Adventure Rank:</label>
+                    <div class="wrap-input100 validate-input">
+                        @Html.EditorFor(model => model.Adventure_Rank, new { htmlAttributes = new { @class = "input100", @type = "number", @min = "1", @max = "60" } })
+                        @Html.ValidationMessageFor(model => model.Adventure_Rank, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+                    <br />
+                    <label class="title" style="text-align:left">World Level:</label>
+                    <div class="wrap-input100 validate-input">
+                        @Html.EditorFor(model => model.World_Level, new { htmlAttributes = new { @class = "input100", @type = "number", @min = "1", @max = "8" } })
+                        @Html.ValidationMessageFor(model => model.World_Level, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+                    <br />
+                    <label class="title" style="text-align:left">Profile Picture:</label>
+                    <div class="wrap-input100 validate-input">
+                        @{List<MvcMariaDB.Models.Characters> charac = MvcMariaDB.Models.Characters.GetCharacters();
+                            <select id="char" name="char" class="form-control">
+                                @foreach (var c in charac)
+                                {
+                                    <option class="option" value="@c.Name" @(c.Id == Model.Profile_Character ? "selected" : "")>@c.Name</option>
+                                }
+                            </select>
+                        }
+                    </div>
+                    <br />
+                    <div class="align-center">
+                        <input type="submit" value="Save" class="white_button">
+                        <input type="submit" value="Cancel" class="white_button" onclick="location.href='@Url.Action("UserProfile", "Users", new { id = Model.Id })';">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

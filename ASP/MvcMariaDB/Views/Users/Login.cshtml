@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+        <div class="charac_data_box">
+            <div class="text">
+                @using (Html.BeginForm("CheckLogin", "Users"))
+                {
+                    <label for="user" class="title">Username:</label>
+                    <input type="text" id="user" name="user">
+                    <br>
+                    <label for="pass" class="title">Password:</label>
+                    <input type="password" id="pass" name="pass">
+                    <br>
+                    if (Session["LoginSuccess"] != null)
+                    {
+                        bool success = (bool)Session["LoginSuccess"];
+                        if (!success)
+                        {
+                            <p>You have entered an invalid username or password</p>
+                            Session["LoginSuccess"] = true;
+                        }
+                    }
+                    <div class="align-center">
+                        <input type="submit" value="Login" class="white_button">
+                    </div>
+                    <br />
+                    <a href="@Url.Action("Register", "Users")" class="link2">Register</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

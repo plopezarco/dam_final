@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,13 +10,19 @@ namespace MvcMariaDB.Models
 {
     public class Users
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        [StringLength(9, ErrorMessage = "UID must be 9 numbers long", MinimumLength = 9)]
+        public string UId { get; set; }
+        [Required]
         public string Username { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
         public string Ign { get; set; }
         public int Adventure_Rank { get; set; }
         public int World_Level { get; set; }
         public int Profile_Character { get; set; }
-        public string Password { get; set; }
+
         public string Profile_Picture { get; set; }
 
 
@@ -26,71 +33,83 @@ namespace MvcMariaDB.Models
                 DataSet dsUser = new DataSet();
                 SqlDataAdapter daUser = new SqlDataAdapter();
                 SqlCommand oSql = new SqlCommand();
-                oSql.CommandText = "SELECT * FROM Users Where username ='" + username + "' and password = '" + password + "'";
+                oSql.CommandText = $"SELECT username, user_id, uid, ign, profile_character, adventure_rank, world_level FROM Users Where username ='{username}' and password = '{password}'";
 
                 oSql.Connection = Connection.conn;
                 daUser.SelectCommand = oSql;
                 daUser.Fill(dsUser);
 
                 DataRow lerro = dsUser.Tables[0].Rows[0];
-                Users user = new Users();
-                user.Id = lerro["user_id"].ToString();
-                user.Username = lerro["username"].ToString();
-                user.Ign = lerro["ign"].ToString();
-                user.Adventure_Rank = int.Parse(lerro["adventure_rank"].ToString());
-                user.World_Level = int.Parse(lerro["world_level"].ToString());
-                user.Profile_Character = int.Parse(lerro["profile_character"].ToString());
-                user.Profile_Picture = Characters.GetCharacters().Where(p => p.Id == user.Profile_Character).FirstOrDefault().Name;
+                Users user = new Users
+                {
+                    Id = int.Parse(lerro["user_id"].ToString()),
+                    Username = (lerro["username"] as string),
+                    UId = (lerro["uid"] as string),
+                    Ign = (lerro["ign"] as string),
+                    Adventure_Rank = string.IsNullOrEmpty(lerro["adventure_rank"].ToString()) ? 0 : int.Parse(lerro["adventure_rank"].ToString()),
+                    World_Level = string.IsNullOrEmpty(lerro["world_level"].ToString()) ? 0 : int.Parse(lerro["world_level"].ToString()),
+                    Profile_Character = string.IsNullOrEmpty(lerro["profile_character"].ToString()) ? 0 : int.Parse(lerro["profile_character"].ToString())
+                };
+                if (user.Profile_Character != 0)
+                {
+                    user.Profile_Picture = Characters.GetCharacters().Where(p => p.Id == user.Profile_Character).FirstOrDefault().Name;
+                }
 
                 return user;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        public static bool SaveUser(Users user)
+        public static Users GetUserById(string id)
         {
             try
             {
-                String query = "insert into Users(user_id, username, password, ign, adventure_rank, world_level, profile_character) " +
-                    "values ('" + user.Id + "','" + user.Username + "','" + user.Password + "','" + user.Ign + "','" + user.Adventure_Rank + "','" + user.World_Level + "','" + user.Profile_Character + "'); ";
-                Connection.Connect();
-                SqlCommand command = new SqlCommand(query, Connection.conn);
-                command.ExecuteNonQuery();
+                DataSet dsUser = new DataSet();
+                SqlDataAdapter daUser = new SqlDataAdapter();
+                SqlCommand oSql = new SqlCommand();
+                oSql.CommandText = $"SELECT username, user_id, uid, ign, profile_character, adventure_rank, world_level FROM Users Where user_id ='{id}'";
 
-                return true;
-            }
-            catch (SqlException exception)
-            {
-                SqlError err = exception.Errors[0];
-                switch (err.Number)
+                oSql.Connection = Connection.conn;
+                daUser.SelectCommand = oSql;
+                daUser.Fill(dsUser);
+
+                DataRow lerro = dsUser.Tables[0].Rows[0];
+                Users user = new Users
                 {
-                    case 2627:
-                        Console.WriteLine("Primary Key");
-                        break;
+                    Id = int.Parse(lerro["user_id"].ToString()),
+                    Username = (lerro["username"] as string),
+                    UId = (lerro["uid"] as string),
+                    Ign = (lerro["ign"] as string),
+                    Adventure_Rank = string.IsNullOrEmpty(lerro["adventure_rank"].ToString()) ? 0 : int.Parse(lerro["adventure_rank"].ToString()),
+                    World_Level = string.IsNullOrEmpty(lerro["world_level"].ToString()) ? 0 : int.Parse(lerro["world_level"].ToString()),
+                    Profile_Character = string.IsNullOrEmpty(lerro["profile_character"].ToString()) ? 0 : int.Parse(lerro["profile_character"].ToString())
+                };
+                if (user.Profile_Character != 0)
+                {
+                    user.Profile_Picture = Characters.GetCharacters().Where(p => p.Id == user.Profile_Character).FirstOrDefault().Name;
                 }
-                return false;
+
+                return user;
+            }
+            catch
+            {
+                return null;
             }
         }
 
-        public static bool UpdateUser(Users user, string newId)
+        public static int SaveUser(Users user)
         {
             try
             {
-                String query = "delete from users where user_id='" + user.Id + "'";
+                String query = "insert into Users(username, password) values ('" + user.Username + "','" + user.Password + "')";
                 Connection.Connect();
                 SqlCommand command = new SqlCommand(query, Connection.conn);
                 command.ExecuteNonQuery();
 
-                user.Id = newId;
-                query = "insert into Users(user_id, username, password, ign, adventure_rank, world_level, profile_character) " +
-                    "values ('" + user.Id + "','" + user.Username + "','" + user.Password + "','" + user.Ign + "','" + user.Adventure_Rank + "','" + user.World_Level + "','" + user.Profile_Character + "'); ";
-                Connection.Connect();
-                SqlCommand command2 = new SqlCommand(query, Connection.conn);
-                command2.ExecuteNonQuery();
-                return true;
+                return 1;
             }
             catch (SqlException exception)
             {
@@ -98,10 +117,27 @@ namespace MvcMariaDB.Models
                 switch (err.Number)
                 {
                     case 2627:
-                        Console.WriteLine("Primary Key");
-                        break;
+                        return -1;
                 }
-                return false;
+                return 0;
+            }
+        }
+
+        public static Users UpdateUser(Users user)
+        {
+            try
+            {
+                string query = $"update users set uid = '{user.UId}', ign = '{user.Ign}', adventure_rank = '{user.Adventure_Rank}', world_level='{user.World_Level}',profile_character = '{user.Profile_Character}' where user_id = '{user.Id}';";
+                Connection.Connect();
+                SqlCommand command2 = new SqlCommand(query, Connection.conn);
+                command2.ExecuteNonQuery();
+
+                Users updatedUser = GetUserById(user.Id.ToString());
+                return updatedUser;
+            }
+            catch (SqlException exception)
+            {
+                return null;
             }
         }
 

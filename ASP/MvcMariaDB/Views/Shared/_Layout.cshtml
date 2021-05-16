@@ -16,6 +16,16 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <br />
         <a href="@Url.Action("Index", "Genshin")">Home</a>
+        @if (Session["CurrentUser"] == null)
+        {
+            <a href="@Url.Action("Login", "Users")">Login</a>
+        }
+        else
+        {
+            MvcMariaDB.Models.Users currentUser = (MvcMariaDB.Models.Users)Session["CurrentUser"];
+            <a href="@Url.Action("UserProfile", "Users", new { id = currentUser.Id })">My Profile</a>
+            <a href="@Url.Action("Logout", "Users")">Logout</a>
+        }
         <hr />
         <a href="@Url.Action("CharacterList", "Genshin")">Characters</a>
         <a href="@Url.Action("WeaponList", "Genshin")">Weapons</a>
@@ -88,6 +98,8 @@
     <script src="~/assets/js/jquery.poptrox.min.js"></script>
     <script src="~/assets/js/util.js"></script>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
+
 </body>
 </html>

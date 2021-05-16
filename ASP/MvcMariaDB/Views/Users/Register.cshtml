@@ -1,0 +1,39 @@
+﻿@model MvcMariaDB.Models.Users
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner">
+    <!-- Boxes -->
+    <div class="thumbnails">
+        <div class="charac_data_box">
+            <div class="text">
+                @using (Html.BeginForm("RegisterUser", "Users"))
+                {
+                    @Html.AntiForgeryToken()
+                    <label class="title" style="text-align:left">Username:</label>
+                    <div class="wrap-input100 validate-input">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "input100", placeholder = "Username" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+                    <br />
+                    <label class="title" style="text-align:left">Password:</label>
+                    <div class="wrap-input100 validate-input">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", @type = "password", placeholder = "Password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        <span class="focus-input100"></span>
+                    </div>
+                    <br />
+                    <div class="align-center">
+                        <input type="submit" value="Register" class="white_button">
+                    </div>
+                    <br />
+                    <a href="@Url.Action("Login", "Users")" class="link2">Login</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
