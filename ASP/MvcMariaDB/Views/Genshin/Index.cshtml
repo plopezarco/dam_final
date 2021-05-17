@@ -1,84 +1,158 @@
 ﻿@{
     ViewBag.Title = "Genshin Impact";
-    Layout = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title | Genshin Impact</title>
-    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/assets/css/main.css">
-    <link rel="icon" href="~/images/mora.png">
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body id="top">
-    <section id="banner">
-        <div class="inner">
-            <header>
-                <h1>Genshin</h1>
-                <p>
-                    A responsive video gallery template with a functional lightbox<br />
-                    designed by Templated and released under the Creative Commons License.
-                </p>
-            </header>
-            <a href="#main" class="more"></a>
-        </div>
-    </section>
-    <!-- Main -->
-    <div id="main">
-        <div class="inner">
-            <!-- Boxes -->
-            <div class="thumbnails">
 
-                <div class="box">
-                    <img class="image fit" src="~/images/weapons.png" />
-                    <div class="inner">
-                        <h3>Weapons</h3>
-                        <p>Weapon dictate what your character's main focus and roles will be in a battle. Due to the different weapon types, there will be characters that specialize at close range or long range combat.</p>
-                        <a href="@Url.Action("WeaponList", "Genshin")" class="button style3 fit">See Weapons</a>
-                    </div>
-                </div>
+<div class="slideshow-container">
+    <h1 class="header_title">Genshin Impact</h1>
+    <div class="mySlides fade">
+        <img src="~/images/bg1.jpg" style="width: 100%">
+        <a href="#scroll" class="more"></a>
+    </div>
 
-                <div class="box">
-                    <img class="image fit" src="~/images/characters.png" />
-                    <div class="inner">
-                        <h3>Characters</h3>
-                        <p>Check out this character list for Genshin Impact. Find out rankings for each character, rarity, element, weapon type, bonus and bonus stats, passive talents, birthday, and more!</p>
-                        <a href="@Url.Action("CharacterList", "Genshin")" class="button style3 fit">See Characters</a>
+    <div class="mySlides fade">
+        <img src="~/images/bg2.jpg" style="width:100%">
+        <a href="#scroll" class="more"></a>
+    </div>
 
-                    </div>
-                </div>
+    <div class="mySlides fade">
+        <img src="~/images/bg3.jpg" style="width:100%">
+        <a href="#scroll" class="more"></a>
+    </div>
+</div>
+<br>
 
-                <div class="box">
-                    <img class="image fit" src="~/images/artifacts.png" />
-                    <div class="inner">
-                        <h3>Artifacts</h3>
-                        <p>Unlike many other RPGs, in Genshin you'll have 5 separate Artifact slots, into which you can equip one of each type of Artifact to customize to improve your character's stats!</p>
-                        <a href="@Url.Action("ArtifactSetList", "Genshin")" class="button style3 fit">See Artifacts</a>
-                    </div>
-                </div>
+<div class="inner" style="margin-top:2%">
+    <!-- Boxes -->
+    <div class="thumbnails" id="scroll">
+
+        <div class="box">
+            <a href="@Url.Action("CharacterList", "Genshin")">
+                <img class="image fit" src="~/images/characters.png" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("CharacterList", "Genshin")" class="button style3 fit link2">
+                    <h3>Characters</h3>
+                </a>
+                <p>Check out this character list for Genshin Impact. Find out rankings for each character, rarity, element, weapon type, bonus and bonus stats, birthday, and more!</p>
             </div>
         </div>
-    </div>
-    <!-- Footer -->
-    <footer class="footer d-sm-block">
-        <hr>
-        <p style="text-align:center">
-            <span>©&nbsp;2021&nbsp; Genshin Impact </span>
-        </p>
-    </footer>
 
-    <!-- Scripts -->
-    <script src="~/assets/js/jquery.min.js"></script>
-    <script src="~/assets/js/jquery.scrolly.min.js"></script>
-    <script src="~/assets/js/jquery.poptrox.min.js"></script>
-    <script src="~/assets/js/skel.min.js"></script>
-    <script src="~/assets/js/util.js"></script>
-    <script src="~/assets/js/main.js"></script>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-</body>
-</html>
+        <div class="box">
+            <a href="@Url.Action("WeaponList", "Genshin")">
+                <img class="image fit" src="~/images/weapons.jpg" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("WeaponList", "Genshin")" class="button style3 fit link2">
+                    <h3>Weapons</h3>
+                </a>
+                <p>Weapon dictate what your character's main focus and roles will be in a battle. Due to the different weapon types, there will be characters that specialize at close range or long range combat.</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="@Url.Action("ArtifactSetList", "Genshin")">
+                <img class="image fit" src="~/images/artifacts2.jpg" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("ArtifactSetList", "Genshin")" class="button style3 fit link2">
+                    <h3>Artifacts</h3>
+                </a>
+                <p>Unlike many other RPGs, in Genshin you'll have 5 separate Artifact slots, into which you can equip one of each type of Artifact to customize to improve your character's stats!</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="@Url.Action("Game", "Genshin")">
+                <img class="image fit" src="~/images/game.jpg" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("Game", "Genshin")" class="button style3 fit link2">
+                    <h3>Game</h3>
+                </a>
+                <p>Genshin Impact is an open-world action ARPG developed by miHoYo. Everything begins in a fantasy land named Teyvat, where the chosen ones have been granted Visions by the Archons and become able to wield the power of the seven elements. </p>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="@Url.Action("Elements", "Genshin")">
+                <img class="image fit" src="~/images/elements.png" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("Elements", "Genshin")" class="button style3 fit link2">
+                    <h3>Elements</h3>
+                </a>
+                <p>There are seven elements to discover. The elements are the powers of the Archons themselves and being given to their wielders in form of a glass orb as a proof of recognition. Once given this power, the wielders are being called having "The Vision" in the world of Teyvat. </p>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="@Url.Action("World", "Genshin")">
+                <img class="image fit" src="~/images/map.png" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("World", "Genshin")" class="button style3 fit link2">
+                    <h3>World</h3>
+                </a>
+                <p>Teyvat is the vast, completely open world in which Genshin Impact takes place. The land is home to a variety of cultures and landscapes. There are cities, harbors, townships, and ancient ruins. There are coasts, cliffs, marshes, and mountain ranges. There is so much to do and explore! </p>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="@Url.Action("SystemRequirements", "Genshin")">
+                <img class="image fit" src="~/images/sys.jpg" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("SystemRequirements", "Genshin")" class="button style3 fit link2">
+                    <h3>System Requirements</h3>
+                </a>
+                <p>Check the Genshin Impact system requirements. Can I Run it? Test your specs and rate your gaming PC. Make sure you meet the Genshin Impact minimum pc specs, then your gaming time will be worry free with no game crashes. </p>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="@Url.Action("Faq", "Genshin")">
+                <img class="image fit" src="~/images/faq.jpg" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("Faq", "Genshin")" class="button style3 fit link2">
+                    <h3>FAQ</h3>
+                </a>
+                <p>
+                    Check the most asked questions about Genshin Impact. Is the game F2P? Does Genshin Impact has multiplayer functionality? Is cross-play available? And much more in this section.
+                </p>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="@Url.Action("AboutUs", "Genshin")">
+                <img class="image fit" src="~/images/aboutus.jpg" />
+            </a>
+            <div class="inner">
+                <a href="@Url.Action("AboutUs", "Genshin")" class="button style3 fit link2">
+                    <h3>About Us</h3>
+                </a>
+                <p>
+                    Check information and profiles of the creators of this project! All of us play Genshin Impact frequently, and we team up together to beat some hard content.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 5000);
+    }
+</script>

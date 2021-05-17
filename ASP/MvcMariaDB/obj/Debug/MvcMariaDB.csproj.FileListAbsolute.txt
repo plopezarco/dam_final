@@ -100,7 +100,6 @@ D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CopyComplete
 D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.dll
 D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.pdb
 D:\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csprojAssemblyReference.cache
-D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CoreCompileInputs.cache
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MvcMariaDB.dll.config
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MvcMariaDB.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\MvcMariaDB.pdb
@@ -202,6 +201,7 @@ D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.Razor.resources.d
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.WebPages.resources.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.WebPages.Deployment.resources.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\bin\es\System.Web.WebPages.Razor.resources.dll
+D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CoreCompileInputs.cache
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.csproj.CopyComplete
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.dll
 D:\UNI_EIBAR\GitHub\dam_final\ASP\MvcMariaDB\obj\Debug\MvcMariaDB.pdb

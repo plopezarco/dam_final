@@ -49,38 +49,55 @@
                     <span class="focus-input100"></span>
                     if (Session["Validation"] != null)
                     {
-                        <span>Please write something in the box first</span>
-                        Session["Validation"] = true;
+                        if (!(bool)Session["Validation"])
+                        {
+                            <span>Please write something in the box first</span>
+                            Session["Validation"] = true;
+                        }
                     }
                     <br />
                     <input type="submit" value="Send" class="white_button">
                 }
             </div>
         </div>
-        @foreach (var comment in Model)
+        @if (Model.Count > 0)
         {
-            <div class="big_box">
-                <div class="small_profile  white_hover">
-                    <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2">
-                        @if (comment.User.Profile_Picture != null)
-                        {
-                            <img class="image avatar fit" src="~/images/characters/@(comment.User.Profile_Picture).png">
-                        }
-                    </a>
+            foreach (var comment in Model)
+            {
+                <div class="big_box">
+                    <div class="small_profile white_hover">
+                        <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2">
+                            @if (comment.User.Profile_Picture != null)
+                            {
+                                <img class="image avatar fit" src="~/images/characters/@(comment.User.Profile_Picture.Replace(" ", String.Empty)).png">
+                            }
+                            else
+                            {
+                                <img class="image avatar fit" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/>
+                            }
+                        </a>
+                    </div>
+                    <div class="comment_content">
+                        <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2" style="font-size:1.3vw; color:white;">
+                            @comment.User.Username
+                        </a>
+                        &nbsp;
+                        <span style="font-size: 0.8vw;">@comment.DateTime.ToString("dd/MM/yyyy hh:mm")</span>
+                        <p>@comment.Content</p>
+                    </div>
                 </div>
-                <div class="comment_content">
-                    <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2" style="font-size:1.3vw; color:white;">
-                        @comment.User.Username
-                    </a>
-                    &nbsp;&nbsp;
-                    <span style="font-size: 0.8vw;">@comment.DateTime.ToString("dd/MM/yyyy")</span>
-                    <p>@comment.Content</p>
-                </div>
-            </div>
+            }
+        }
+        else
+        {
+            <h3>There are no comments yet</h3>
         }
     </div>
-    <div class="align-center">
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-        @Html.PagedListPager(Model, page => Url.Action("CommentList", new { page }))
-    </div>
+    @if (Model.Count > 0)
+    {
+        <div class="align-center">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, page => Url.Action("CommentList", new { page }))
+        </div>
+    }
 </div>

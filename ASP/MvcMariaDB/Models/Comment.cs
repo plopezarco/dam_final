@@ -53,11 +53,63 @@ namespace MvcMariaDB.Models
             }
         }
 
+        public static List<Comment> GetCommentListById(Users user)
+        {
+            try
+            {
+                List<Comment> commentList = new List<Comment>();
+                DataSet dsComment = new DataSet();
+                SqlDataAdapter daComment = new SqlDataAdapter();
+                SqlCommand oSql = new SqlCommand();
+                oSql.CommandText = $"SELECT * FROM Comments where user_id ='{user.Id}' order by datetime desc";
+
+                oSql.Connection = Connection.conn;
+                daComment.SelectCommand = oSql;
+                daComment.Fill(dsComment);
+
+
+                foreach (DataRow lerro in dsComment.Tables[0].Rows)
+                {
+                    Comment comment = new Comment
+                    {
+                        Id = int.Parse(lerro["comment_id"].ToString()),
+                        DateTime = DateTime.Parse(lerro["datetime"].ToString()),
+                        Content = lerro["content"].ToString(),
+                        User_Id = int.Parse(lerro["user_id"].ToString())
+                    };
+                    comment.User = user;
+                    commentList.Add(comment);
+                }
+                return commentList;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public static bool SaveComment(Comment comment)
         {
             try
             {
                 String query = $"insert into comments(datetime, content, user_id) values ('{comment.DateTime}','{comment.Content}','{comment.User_Id}')";
+                Connection.Connect();
+                SqlCommand command = new SqlCommand(query, Connection.conn);
+                command.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public static bool DeleteComment(string id)
+        {
+            try
+            {
+                String query = $"delete from comments where comment_id='{id}'";
                 Connection.Connect();
                 SqlCommand command = new SqlCommand(query, Connection.conn);
                 command.ExecuteNonQuery();

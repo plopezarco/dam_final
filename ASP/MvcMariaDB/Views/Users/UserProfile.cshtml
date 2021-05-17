@@ -10,7 +10,7 @@
             <h3 class="title">@Model.Username</h3>
             @if (Model.Profile_Picture != null)
             {
-                <img class="image avatar" src="~/images/characters/@(Model.Profile_Picture).png">
+                <img class="image avatar" src="~/images/characters/@(Model.Profile_Picture.Replace(" ", String.Empty)).png">
             }
             else
             {
@@ -27,11 +27,53 @@
                     if (currentUser.Id == Model.Id)
                     {
                         <a href="@Url.Action("MyProfile", "Users")" class="link2">Edit Profile</a>
-                        <a href="@Url.Action("DeleteUser", "Users")" class="link2" style="float:right" onclick = "return confirm('Are sure you want to delete your account?');">Delete Account</a>
+                        <a href="@Url.Action("DeleteUser", "Users")" class="link2" style="float:right" onclick="return confirm('Are sure you want to delete your account?');">Delete Account</a>
                     }
                 }
                 <br />
             </div>
         </div>
     </div>
+
+    @if (Model.Comments != null && Model.Comments.Count != 0)
+    {
+        <div class="thumbnails">
+            <h3 class="align-left">Comments:</h3>
+            @foreach (var comment in Model.Comments)
+            {
+                <div class="big_box">
+                    <div class="small_profile white_hover">
+                        <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2">
+                            @if (comment.User.Profile_Picture != null)
+                            {
+                                <img class="image avatar fit" src="~/images/characters/@(comment.User.Profile_Picture.Replace(" ", String.Empty)).png">
+                            }
+                            else
+                            {
+                                <img class="image avatar fit" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />
+                            }
+                        </a>
+                    </div>
+                    <div class="comment_content">
+                        <a href="@Url.Action("UserProfile", "Users", new { id = comment.User.Id })" class="link2" style="font-size:1.3vw; color:white;">
+                            @comment.User.Username
+                        </a>
+                        &nbsp;&nbsp;
+                        <span style="font-size: 0.8vw;">@comment.DateTime.ToString("dd/MM/yyyy hh:mm")</span>
+                        <p>@comment.Content</p>
+                        @if (currentUser.Id == Model.Id)
+                        {
+                            <a href="@Url.Action("DeleteComment", "Users", new {id = comment.Id})" class="link2">
+                                <img class="image bin" src="~/images/bin.png" />
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <h4 class="align-center">No posted comments yet</h4>
+    }
 </div>

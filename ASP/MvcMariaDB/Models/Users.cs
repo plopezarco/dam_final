@@ -24,6 +24,7 @@ namespace MvcMariaDB.Models
         public int Adventure_Rank { get; set; }
         public int World_Level { get; set; }
         public int Profile_Character { get; set; }
+        public List<Comment> Comments { get; set; }
 
         public string Profile_Picture { get; set; }
 
@@ -54,8 +55,9 @@ namespace MvcMariaDB.Models
                 };
                 if (user.Profile_Character != 0)
                 {
-                    user.Profile_Picture = Characters.GetCharacters().Where(p => p.Id == user.Profile_Character).FirstOrDefault().Name;
+                    user.Profile_Picture = Characters.GetCharactersName().Where(p => p.Id == user.Profile_Character).FirstOrDefault().Name;
                 }
+                user.Comments = Comment.GetCommentListById(user);
 
                 return user;
             }
@@ -91,8 +93,9 @@ namespace MvcMariaDB.Models
                 };
                 if (user.Profile_Character != 0)
                 {
-                    user.Profile_Picture = Characters.GetCharacters().Where(p => p.Id == user.Profile_Character).FirstOrDefault().Name;
+                    user.Profile_Picture = Characters.GetCharactersName().Where(p => p.Id == user.Profile_Character).FirstOrDefault().Name;
                 }
+                user.Comments = Comment.GetCommentListById(user);
 
                 return user;
             }

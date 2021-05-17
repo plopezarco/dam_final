@@ -95,21 +95,30 @@ namespace MvcMariaDB.Controllers
         }
         public ActionResult UpdateProfile(FormCollection collection, int user_id)
         {
-            string fav_char = collection["char"].ToString();
-            int prof_char = Characters.GetCharacters().Where(p => p.Name == fav_char).First().Id;
-            Users updatedUser = new Users
+            try
             {
-                Id = user_id,
-                UId = collection["UId"].ToString(),
-                Ign = collection["Ign"].ToString(),
-                Adventure_Rank = int.Parse(collection["Adventure_Rank"].ToString()),
-                World_Level = int.Parse(collection["World_Level"].ToString()),
-                Profile_Character = prof_char
-            };
+                string fav_char = collection["char"].ToString();
+                int prof_char = Characters.GetCharacters().Where(p => p.Name == fav_char).First().Id;
 
-            updatedUser = Users.UpdateUser(updatedUser);
-            Session["CurrentUser"] = updatedUser;
-            return RedirectToAction("UserProfile", "Users", new { id = updatedUser.Id });
+                Users updatedUser = new Users
+                {
+                    Id = user_id,
+                    UId = collection["UId"].ToString(),
+                    Ign = collection["Ign"].ToString(),
+                    Adventure_Rank = int.Parse(collection["Adventure_Rank"].ToString()),
+                    World_Level = int.Parse(collection["World_Level"].ToString()),
+                    Profile_Character = prof_char
+                };
+
+                updatedUser = Users.UpdateUser(updatedUser);
+                Session["CurrentUser"] = updatedUser;
+                return RedirectToAction("UserProfile", "Users", new { id = updatedUser.Id });
+            }
+            catch
+            {
+                ViewBag.ErrorMessage = "An error has ocurred while updating the account";
+                return View("Error");
+            }
         }
         public ActionResult DeleteUser()
         {
@@ -144,7 +153,6 @@ namespace MvcMariaDB.Controllers
             ViewBag.ErrorMessage = "You need to log in first";
             return View("Error");
         }
-
         public ActionResult SendComment(FormCollection collection)
         {
             string commentString = collection["Content"].ToString();
@@ -170,6 +178,20 @@ namespace MvcMariaDB.Controllers
             }
             ViewBag.ErrorMessage = "Your comment can't be saved";
             return View("Error");
+        }
+        public ActionResult DeleteComment(string id)
+        {
+            Users currentUser = (Users)Session["CurrentUser"];
+            if (currentUser != null)
+            {
+                Comment.DeleteComment(id);
+                return RedirectToAction("UserProfile", "Users", new { id = currentUser.Id });
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "An error has ocurred while deleting the comment";
+                return View("Error");
+            }
         }
     }
 }

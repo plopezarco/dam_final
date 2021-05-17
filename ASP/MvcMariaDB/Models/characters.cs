@@ -67,5 +67,30 @@ namespace MvcMariaDB.Models
             Characters_List = characterList;
             return characterList;
         }
+
+        public static List<Characters> GetCharactersName()
+        {
+            List<Characters> characterList = new List<Characters>();
+            DataSet dsCharacter = new DataSet();
+            SqlDataAdapter daCharacter = new SqlDataAdapter();
+            SqlCommand oSql = new SqlCommand();
+            oSql.CommandText = "SELECT character_id, character_name FROM Characters ORDER BY Character_Name";
+
+            oSql.Connection = Connection.conn;
+            daCharacter.SelectCommand = oSql;
+            daCharacter.Fill(dsCharacter);
+
+
+            foreach (DataRow lerro in dsCharacter.Tables[0].Rows)
+            {
+                Characters charac = new Characters
+                {
+                    Id = int.Parse(lerro["character_id"].ToString()),
+                    Name = lerro["character_name"].ToString()
+                };
+                characterList.Add(charac);
+            }
+            return characterList;
+        }
     }
 }
